@@ -2,12 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, pkgs-unstable, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      # Set up SDDM
+      ./config/sddm.nix
     ];
 
   # Bootloader.
@@ -54,6 +57,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Link portal definitions
+  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -64,12 +70,6 @@
     kitty
     alacritty
   ];
-
-  # Enable desktop stuff 
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-	
-  programs.hyprland.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

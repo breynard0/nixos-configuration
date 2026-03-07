@@ -1,6 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, inputs, ... }:
 
 {
+  imports = [
+      # Enable and configure the hypr ecosystem
+      ./config/hypr.nix
+  ];
+
   home.username = "breynard";
 
   # set cursor size and dpi for 4k monitor
