@@ -1,7 +1,12 @@
 # SDDM Configuration by lawrab's nixos-config
 
 # sddm.nix - SDDM Display Manager Configuration with Catppuccin Theme
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   # Custom Hyprland session that uses home-manager's start-hyprland wrapper
@@ -23,7 +28,7 @@ in
     # Enable Wayland support
     wayland = {
       enable = true;
-      compositor = "kwin";  # Can also use weston if kwin doesn't work
+      compositor = "kwin"; # Can also use weston if kwin doesn't work
     };
 
     # Use KDE6 version for better Wayland support
@@ -34,7 +39,7 @@ in
       General = {
         DisplayServer = "wayland";
         GreeterEnvironment = "QT_WAYLAND_SHELL_INTEGRATION=layer-shell";
-        InputMethod = "";  # Can be set to "qtvirtualkeyboard" if needed
+        InputMethod = ""; # Can be set to "qtvirtualkeyboard" if needed
       };
 
       # Wayland specific settings
