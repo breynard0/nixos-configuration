@@ -164,13 +164,6 @@
         disable_hyprland_logo = true;
         enable_anr_dialog = false;
       };
-
-      # Fix Jetbrains dialogs
-      windowrulev2 = [
-        "tile,class:^(jetbrains-.*)$"
-        "float,class:^(jetbrains-.*)$,title:^(win[0-9]+)$"
-      ];
-
     };
   };
 
