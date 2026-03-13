@@ -39,7 +39,7 @@
     "flakes"
   ];
 
-  # Enable substituters
+  # Enable cache
   nix.settings = {
     substituters = [ "https://cache.nixos.org" ];
     trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
@@ -86,7 +86,6 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [ ];
   };
 
   # Allow unfree packages
@@ -107,6 +106,9 @@
 
     kitty
     alacritty
+
+    (pkgs.sddm-astronaut.override { embeddedTheme = "pixel_sakura"; })
+    pkgs.kdePackages.qtmultimedia
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

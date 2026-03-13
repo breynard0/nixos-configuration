@@ -45,6 +45,7 @@
       bind = [
         "$mainMod, RETURN, exec, alacritty"
         "$mainMod, P, exec, vicinae open"
+        "$mainMod, S, exec, hyprshot -m region"
         "$mainMod, F, exec, firefox"
         "$mainMod, L, exec, hyprlock"
 
@@ -180,7 +181,7 @@
     size = 16;
   };
 
-  home.file."~/Pictures/wallpaper.png".source = ../resources/wallpaper.png;
+  home.file."Pictures/wallpaper.png".source = ../resources/wallpaper.png;
   services.hyprpaper = {
     enable = true;
     settings = {

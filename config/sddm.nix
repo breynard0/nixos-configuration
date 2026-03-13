@@ -1,6 +1,5 @@
 # SDDM Configuration by lawrab's nixos-config
 
-# sddm.nix - SDDM Display Manager Configuration with Catppuccin Theme
 {
   config,
   pkgs,
@@ -44,7 +43,7 @@ in
 
       # Wayland specific settings
       Wayland = {
-        CompositorCommand = "${pkgs.kdePackages.kwin}/bin/kwin_wayland --no-lockscreen --inputmethod maliit-keyboard";
+        CompositorCommand = "${pkgs.kdePackages.kwin}/bin/kwin_wayland --no-lockscreen --width 1920 --height 1200";
         EnableHiDPI = true;
         SessionDir = "${hyprland-session}/share/wayland-sessions";
       };
@@ -54,20 +53,16 @@ in
         DefaultPath = "/run/current-system/sw/bin";
         HideShells = "";
         HideUsers = "";
-        MaximumUid = 60513;
+        MaximumUid = 1001;
         MinimumUid = 1000;
         RememberLastSession = true;
         RememberLastUser = true;
         ReuseSession = false;
       };
+
+      Theme = {
+        Current = "sddm-astronaut-theme";
+      };
     };
   };
-
-  # Ensure SDDM theme and dependencies are installed
-  environment.systemPackages = with pkgs; [
-    libsForQt5.qt5.qtquickcontrols2
-    libsForQt5.qt5.qtgraphicaleffects
-    kdePackages.qtquick3d
-    kdePackages.qtvirtualkeyboard
-  ];
 }

@@ -9,37 +9,37 @@
       lite-xl
       kdePackages.okular
       qimgv
-      kdePackages.filelight
+      kdePackages.qtstyleplugin-kvantum
 
       # Other apps
-      # vesktop
-      # spotify
-      # steam
-      # rnote
-      # speedcrunch
-      # blender
-      # slack
-      # gtkwave
-      # godot
-      # musescore
-      # muse-sounds-manager
-      # thunderbird
-      # libreoffice
-      # kicad
-      # gimp
-      # localsend
-      # obsidian
-      # stm32cubemx
+      vesktop
+      spotify
+      steam
+      rnote
+      speedcrunch
+      blender
+      slack
+      gtkwave
+      godot
+      musescore
+      muse-sounds-manager
+      thunderbird
+      libreoffice
+      kicad
+      gimp
+      localsend
+      obsidian
+      stm32cubemx
       krita
     ]
     # Jetbrains apps
     ++ (with jetbrains; [
-      # webstorm
-      # rust-rover
-      # # rider
-      # pycharm
-      # jdk
-      # idea
-      # clion
+      webstorm
+      rust-rover
+      rider
+      pycharm
+      jdk
+      idea
+      clion
     ]);
 }

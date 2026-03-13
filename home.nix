@@ -11,7 +11,7 @@
     ./config/hypr.nix
     ./config/vicinae.nix
     ./config/vscode.nix
-    ./config/gtk.nix
+    ./config/theming.nix
     ./config/terminal.nix
     ./config/apps.nix
   ];
@@ -85,6 +85,7 @@
     # nix dev tools
     nixd
     nixfmt
+    nh
   ];
 
   # basic configuration of git, please change to your own
