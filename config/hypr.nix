@@ -78,11 +78,15 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
+      ];
 
+      bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
         "$mainMod SHIFT, T, fullscreen"
+      ];
 
+      bindel = [
         ",XF86AudioRaiseVolume, exec, volumectl +"
         ",XF86AudioLowerVolume, exec, volumectl -"
         ",XF86AudioMute, exec, volumectl %"
