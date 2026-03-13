@@ -8,19 +8,14 @@
 
 {
   imports = [
-    # Enable and configure the hypr ecosystem
     ./config/hypr.nix
     ./config/vicinae.nix
     ./config/vscode.nix
+    ./config/gtk.nix
+    ./config/terminal.nix
   ];
 
   home.username = "breynard";
-
-  # set cursor size and dpi for 4k monitor
-  xresources.properties = {
-    "Xcursor.size" = 12;
-    "Xft.dpi" = 172;
-  };
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -61,6 +56,7 @@
     gawk
     zstd
     gnupg
+    dconf
 
     # nix related
     #
@@ -93,19 +89,12 @@
   # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
-    userName = "breynard";
-    userEmail = "dev@breynard.net";
   };
 
-  programs.git.extraConfig = {
+  programs.git.settings = {
     init.defaultBranch = "main";
-  };
-
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      starship init fish | source
-    '';
+    user.name = "breynard";
+    user.email = "dev@breynard.net";
   };
 
   # starship - an customizable prompt for any shell

@@ -19,11 +19,20 @@
     ./config/sddm.nix
   ];
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = ["breynard"];
+    };
+  };
+  networking.firewall.allowedTCPPorts = [ 22 ];
+
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
-
+  
   # Enable Flakes
   nix.settings.experimental-features = [
     "nix-command"

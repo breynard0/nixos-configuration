@@ -8,6 +8,14 @@
 {
   imports = [ ];
 
+  home.packages = with pkgs; [
+    hyprcursor
+    hyprshot
+    hyprlock
+    hyprprop
+    adwaita-icon-theme
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs-unstable.hyprland;
@@ -20,6 +28,10 @@
         "QT_STYLE_OVERRIDE,Adwaita-dark"
         "COLOR_SCHEME,prefer-dark"
         "GTK_APPLICATION_PREFER_DARK_THEME,1"
+        "XCURSOR_SIZE,16"
+        "XCURSOR_THEME,Adwaita"
+        "HYPRCURSOR_SIZE,16"
+        "HYPRCURSOR_THEME,Adwaita"
       ];
 
       exec-once = [
@@ -80,6 +92,15 @@
         enable_anr_dialog = false;
       };
     };
+  };
+
+  # Cursor stuff
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.adwaita-icon-theme;
+    name = "Adwaita";
+    size = 16;
   };
 
   xdg.portal = {
