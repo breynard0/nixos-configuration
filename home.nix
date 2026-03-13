@@ -13,6 +13,7 @@
     ./config/vscode.nix
     ./config/gtk.nix
     ./config/terminal.nix
+    ./config/apps.nix
   ];
 
   home.username = "breynard";
@@ -95,19 +96,6 @@
     init.defaultBranch = "main";
     user.name = "breynard";
     user.email = "dev@breynard.net";
-  };
-
-  # starship - an customizable prompt for any shell
-  programs.starship = {
-    enable = true;
-    enableFishIntegration = true;
-    # custom settings
-    settings = {
-      add_newline = false;
-      aws.disabled = true;
-      gcloud.disabled = true;
-      line_break.disabled = true;
-    };
   };
 
   # This value determines the home Manager release that your

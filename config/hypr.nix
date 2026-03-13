@@ -47,6 +47,48 @@
         "$mainMod, P, exec, vicinae open"
         "$mainMod, F, exec, firefox"
         "$mainMod, L, exec, hyprlock"
+
+        "$mainMod SHIFT, Q, killactive"
+        "$mainMod SHIFT, V, togglefloating"
+        "$mainMod SHIFT, J, togglesplit"
+
+        "$mainMod, C, exec, vesktop"
+        "$mainMod, M, exec, spotify"
+        "$mainMod, E, exec, dolphin"
+        "$mainMod, F, exec, firefox"
+
+        "$mainMod, 1, workspace, 1"
+        "$mainMod, 2, workspace, 2"
+        "$mainMod, 3, workspace, 3"
+        "$mainMod, 4, workspace, 4"
+        "$mainMod, 5, workspace, 5"
+        "$mainMod, 6, workspace, 6"
+        "$mainMod, 7, workspace, 7"
+        "$mainMod, 8, workspace, 8"
+        "$mainMod, 9, workspace, 9"
+        "$mainMod, 0, workspace, 10"
+
+        "$mainMod SHIFT, 1, movetoworkspace, 1"
+        "$mainMod SHIFT, 2, movetoworkspace, 2"
+        "$mainMod SHIFT, 3, movetoworkspace, 3"
+        "$mainMod SHIFT, 4, movetoworkspace, 4"
+        "$mainMod SHIFT, 5, movetoworkspace, 5"
+        "$mainMod SHIFT, 6, movetoworkspace, 6"
+        "$mainMod SHIFT, 7, movetoworkspace, 7"
+        "$mainMod SHIFT, 8, movetoworkspace, 8"
+        "$mainMod SHIFT, 9, movetoworkspace, 9"
+        "$mainMod SHIFT, 0, movetoworkspace, 10"
+
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
+        "$mainMod SHIFT, T, fullscreen"
+
+        ",XF86AudioRaiseVolume, exec, volumectl +"
+        ",XF86AudioLowerVolume, exec, volumectl -"
+        ",XF86AudioMute, exec, volumectl %"
+        ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ",XF86MonBrightnessUp, exec, lightctl +"
+        ",XF86MonBrightnessDown, exec, lightctl -"
       ];
 
       general = {
@@ -86,11 +128,49 @@
         };
       };
 
+      input = {
+        kb_layout = "us";
+        kb_variant = "";
+        kb_model = "";
+        kb_options = "";
+        kb_rules = "";
+
+        follow_mouse = 1;
+
+        touchpad = {
+          natural_scroll = false;
+        };
+      };
+
+      device = {
+        name = "wacom-hid-5285-pen";
+        output = "eDP-1";
+      };
+
+      gesture = [
+        "3, horizontal, workspace"
+        "3, vertical, resize"
+        "4, down, close"
+        "4, up, fullscreen"
+      ];
+
+      dwindle = {
+        pseudotile = true;
+        preserve_split = true;
+      };
+
       misc = {
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
         enable_anr_dialog = false;
       };
+
+      # Fix Jetbrains dialogs
+      windowrulev2 = [
+        "tile,class:^(jetbrains-.*)$"
+        "float,class:^(jetbrains-.*)$,title:^(win[0-9]+)$"
+      ];
+
     };
   };
 
@@ -101,6 +181,16 @@
     package = pkgs.adwaita-icon-theme;
     name = "Adwaita";
     size = 16;
+  };
+
+  home.file."~/Pictures/wallpaper.png".source = ../resources/wallpaper.png;
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      splash = false;
+      preload = "~/Pictures/wallpaper.png";
+      wallpaper = ",~/Pictures/wallpaper.png";
+    };
   };
 
   xdg.portal = {
