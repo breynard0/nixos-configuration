@@ -108,7 +108,6 @@
     alacritty
 
     (pkgs.sddm-astronaut.override { embeddedTheme = "pixel_sakura"; })
-    pkgs.kdePackages.qtmultimedia
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

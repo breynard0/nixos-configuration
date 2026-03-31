@@ -32,6 +32,9 @@ in
 
     # Use KDE6 version for better Wayland support
     package = pkgs.kdePackages.sddm;
+    extraPackages = [
+      pkgs.kdePackages.qtmultimedia
+    ];
 
     settings = {
       # General settings
