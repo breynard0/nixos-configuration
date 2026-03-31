@@ -10,6 +10,7 @@
   imports = [
     ./config/hypr.nix
     ./config/vicinae.nix
+    ./config/ironbar.nix
     ./config/vscode.nix
     ./config/theming.nix
     ./config/terminal.nix
@@ -86,6 +87,9 @@
     nixd
     nixfmt
     nh
+
+    # Fonts
+    nerd-fonts.jetbrains-mono
   ];
 
   # basic configuration of git, please change to your own
