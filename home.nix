@@ -9,7 +9,6 @@
 {
   imports = [
     ./config/hypr.nix
-    ./config/noctalia.nix
     ./config/vicinae.nix
     ./config/vscode.nix
     ./config/theming.nix
