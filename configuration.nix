@@ -17,6 +17,9 @@
 
     # Set up SDDM
     ./config/sddm.nix
+
+    # Battery stuff
+    ./config/battery.nix
   ];
 
   services.openssh = {
