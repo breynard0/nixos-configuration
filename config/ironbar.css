@@ -1,5 +1,6 @@
 :root {
     --color-dark-primary: rgba(48, 49, 51, 0.4);
+    --color-dark-primary-harsher: rgba(48, 49, 51, 0.9);
     --color-dark-secondary: rgba(46, 46, 46, 0.5);
     --color-white: #fff;
     --color-active: #6699cc;
@@ -52,7 +53,7 @@ switch:not(:checked) {
 }
 
 #bar, popover, popover contents, calendar {
-    background-color: var(--color-dark-primary);
+    background-color: var(--color-dark-primary-harsher);
 }
 
 box, button, label {

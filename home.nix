@@ -11,6 +11,7 @@
     ./config/hypr.nix
     ./config/vicinae.nix
     ./config/ironbar.nix
+    ./config/avizo.nix
     ./config/vscode.nix
     ./config/theming.nix
     ./config/terminal.nix

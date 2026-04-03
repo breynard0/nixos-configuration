@@ -92,7 +92,7 @@
         ",XF86AudioRaiseVolume, exec, volumectl +"
         ",XF86AudioLowerVolume, exec, volumectl -"
         ",XF86AudioMute, exec, volumectl %"
-        ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ",XF86AudioMicMute, exec, volumectl -m toggle-mute"
         ",XF86MonBrightnessUp, exec, lightctl +"
         ",XF86MonBrightnessDown, exec, lightctl -"
       ];
