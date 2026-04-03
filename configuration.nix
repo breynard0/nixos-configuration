@@ -21,6 +21,9 @@
 
     # Battery stuff
     ./config/battery.nix
+
+    # Theming
+    ./config/stylix.nix
   ];
 
   services.openssh = {

@@ -9,7 +9,6 @@
       lite-xl
       kdePackages.okular
       qimgv
-      kdePackages.qtstyleplugin-kvantum
 
       # Other apps
       vesktop

@@ -22,6 +22,11 @@
       url = "github:JakeStanger/ironbar";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    # stylix = {
+        stylix.url = "github:nix-community/stylix/release-25.11";
+      # inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # };
   };
 
   nixConfig = {
@@ -69,6 +74,8 @@
 
             home-manager.users.breynard = import ./home.nix;
           }
+
+          inputs.stylix.nixosModules.stylix
         ];
       };
     };
