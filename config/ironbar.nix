@@ -8,13 +8,16 @@
     inputs.ironbar.homeManagerModules.default
   ];
 
+  # Set styling
+  home.file.".config/ironbar/style.css".source = ./ironbar.css;
+
   programs.ironbar = {
     enable = true;
     systemd = true;
     config = {
       position = "top";
       anchor_to_edges = true;
-      height = 14;
+      height = 12;
       popup_autohide = true;
       start = [
         { type = "workspaces"; }
@@ -22,33 +25,33 @@
       center = [
         {
           type = "focused";
-          icon_size = 12;
+          icon_size = 10;
         }
       ];
       end = [
         {
           type = "music";
-          icon_size = 12;
+          icon_size = 10;
         }
         {
           type = "volume";
-          icon_size = 12;
+          icon_size = 10;
         }
         {
           type = "clipboard";
-          icon_size = 12;
+          icon_size = 10;
         }
         {
           type = "network_manager";
-          icon_size = 12;
+          icon_size = 10;
         }
         {
           type = "bluetooth";
-          icon_size = 12;
+          icon_size = 10;
         }
         {
           type = "battery";
-          icon_size = 12;
+          icon_size = 10;
         }
         {
           type = "sys_info";
@@ -63,22 +66,5 @@
         }
       ];
     };
-    style = ''
-      * {
-        font-family: Noto Sans Nerd Font, sans-serif;
-        font-size: 10px;
-        border: none;
-        border-radius: 0;
-        background: #303031e4;
-        min-height: 0;
-      }
-      .workspaces .item.focused {
-        background-color: #3060a266;
-      }
-
-      .workspaces .item.urgent {
-        background-color: #a63040dd;
-      }
-    '';
   };
 }

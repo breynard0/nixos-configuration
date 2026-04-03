@@ -21,7 +21,8 @@
     package = pkgs-unstable.hyprland;
 
     settings = {
-      monitor = ",1920x1200@60,auto,1";
+      # monitor = ",1920x1200@60,auto,1";
+      monitor = ",2304x1440@60,auto,1";
 
       env = [
         "GTK_THEME,Adwaita:dark"
