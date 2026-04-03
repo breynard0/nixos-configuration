@@ -52,7 +52,11 @@ switch:not(:checked) {
   background-color: var(--color-dark-secondary);
 }
 
-#bar, popover, popover contents, calendar {
+#bar {
+    background-color: var(--color-dark-primary);
+}
+
+popover, popover contents, calendar {
     background-color: var(--color-dark-primary-harsher);
 }
 
