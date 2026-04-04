@@ -30,15 +30,5 @@
       obsidian
       stm32cubemx
       krita
-    ]
-    # Jetbrains apps
-    ++ (with jetbrains; [
-      webstorm
-      rust-rover
-      rider
-      pycharm
-      jdk
-      idea
-      clion
-    ]);
+    ];
 }

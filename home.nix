@@ -16,6 +16,7 @@
     ./config/theming.nix
     ./config/terminal.nix
     ./config/apps.nix
+    ./config/jetbrains.nix
   ];
 
   home.username = "breynard";
