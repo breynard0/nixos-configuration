@@ -1,8 +1,6 @@
 {
   pkgs,
   pkgs-unstable,
-  config,
-  inputs,
   ...
 }:
 {
@@ -24,8 +22,8 @@
       monitor = ",1920x1200@60,auto,1";
 
       env = [
-        "GTK_THEME,Adwaita:dark"
-        "QT_STYLE_OVERRIDE,Adwaita-dark"
+        # "GTK_THEME,Adwaita:dark"
+        # "QT_STYLE_OVERRIDE,Adwaita-dark"
         "env = QT_QPA_PLATFORM,wayland"
         "env = QT_QPA_PLATFORMTHEME,qt5ct"
         "COLOR_SCHEME,prefer-dark"
@@ -134,6 +132,16 @@
         };
       };
 
+      animations = {
+        enabled = true;
+        bezier = "quick,0.15,0,0.1,1";
+        animation = [
+          "windows, 1, 2, quick"
+          "windowsOut, 1, 2, default, popin 80%"
+          "workspaces, 1, 4, default"
+        ];
+      };
+
       input = {
         kb_layout = "us";
         kb_variant = "";
@@ -195,7 +203,6 @@
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs-unstable; [
-      xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
     ];
     config.common.default = "*";

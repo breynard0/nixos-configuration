@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   gtk = {
@@ -11,8 +11,8 @@
     };
 
     theme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita-dark";
+      package = pkgs.fluent-gtk-theme;
+      name = "Fluent-Dark";
     };
 
     iconTheme = {
@@ -23,6 +23,14 @@
     font = {
       name = "Sans";
       size = 11;
+    };
+
+    gtk2.extraConfig = ''
+      gtk-application-prefer-dark-theme = 1
+    '';
+
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
     };
 
     gtk4.extraConfig = {
