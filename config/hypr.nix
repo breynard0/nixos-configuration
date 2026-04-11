@@ -21,12 +21,13 @@
     package = pkgs-unstable.hyprland;
 
     settings = {
-      # monitor = ",1920x1200@60,auto,1";
-      monitor = ",2304x1440@60,auto,1";
+      monitor = ",1920x1200@60,auto,1";
 
       env = [
         "GTK_THEME,Adwaita:dark"
         "QT_STYLE_OVERRIDE,Adwaita-dark"
+        "env = QT_QPA_PLATFORM,wayland"
+        "env = QT_QPA_PLATFORMTHEME,qt5ct"
         "COLOR_SCHEME,prefer-dark"
         "GTK_APPLICATION_PREFER_DARK_THEME,1"
         "XCURSOR_SIZE,16"
@@ -47,7 +48,6 @@
         "$mainMod, RETURN, exec, alacritty"
         "$mainMod, P, exec, vicinae open"
         "$mainMod, S, exec, hyprshot -m region"
-        "$mainMod, F, exec, firefox"
         "$mainMod, L, exec, hyprlock"
 
         "$mainMod SHIFT, Q, killactive"
@@ -102,6 +102,8 @@
         gaps_out = 4;
 
         border_size = 2;
+        "col.active_border" = "rgba(0088ddee)";
+        "col.inactive_border" = "rgba(595959aa)";
 
         resize_on_border = true;
 
@@ -121,6 +123,7 @@
           enabled = true;
           range = 4;
           render_power = 3;
+          color = "rgba(1a1a1aee)";
         };
 
         blur = {

@@ -13,7 +13,7 @@
     ./config/ironbar.nix
     ./config/avizo.nix
     ./config/vscode.nix
-    ./config/theming.nix
+    ./config/gtk.nix
     ./config/terminal.nix
     ./config/apps.nix
     ./config/jetbrains.nix

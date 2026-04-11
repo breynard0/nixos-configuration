@@ -16,29 +16,16 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    # Set up SDDM
+    # # Set up SDDM
     ./config/sddm.nix
 
     # Battery stuff
     ./config/battery.nix
-
-    # Theming
-    ./config/stylix.nix
   ];
 
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = true;
-      AllowUsers = [ "breynard" ];
-    };
-  };
-  networking.firewall.allowedTCPPorts = [ 22 ];
-
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable Flakes
   nix.settings.experimental-features = [
@@ -61,7 +48,6 @@
 
   networking.hostName = "breynard-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -93,6 +79,13 @@
     ];
   };
 
+  # Qt configuration
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -111,8 +104,6 @@
 
     kitty
     alacritty
-
-    (pkgs.sddm-astronaut.override { embeddedTheme = "pixel_sakura"; })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -122,17 +113,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -5,6 +5,7 @@
     [
       # System app suite
       firefox
+      kdePackages.qtsvg
       kdePackages.dolphin
       lite-xl
       kdePackages.okular
