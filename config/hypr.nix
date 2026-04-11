@@ -195,8 +195,11 @@
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs-unstable; [
+      xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
     ];
     config.common.default = "*";
   };
+
+  services.polkit-gnome.enable = true;
 }
