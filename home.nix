@@ -1,8 +1,5 @@
 {
-  config,
   pkgs,
-  pkgs-unstable,
-  inputs,
   ...
 }:
 
@@ -11,7 +8,7 @@
     ./config/hypr.nix
     ./config/vicinae.nix
     ./config/ironbar.nix
-    ./config/avizo.nix
+    ./config/screen_display.nix
     ./config/vscode.nix
     ./config/gtk.nix
     ./config/terminal.nix

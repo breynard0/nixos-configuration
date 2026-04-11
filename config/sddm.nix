@@ -1,9 +1,7 @@
 # SDDM Configuration by lawrab's nixos-config
 
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
 

@@ -78,6 +78,7 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
+        "CAPS,Caps_Lock, exec, swayosd-client --caps-lock"
       ];
 
       bindm = [
@@ -87,12 +88,12 @@
       ];
 
       bindel = [
-        ",XF86AudioRaiseVolume, exec, volumectl +"
-        ",XF86AudioLowerVolume, exec, volumectl -"
-        ",XF86AudioMute, exec, volumectl %"
-        ",XF86AudioMicMute, exec, volumectl -m toggle-mute"
-        ",XF86MonBrightnessUp, exec, lightctl +"
-        ",XF86MonBrightnessDown, exec, lightctl -"
+        ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+        ",XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+        ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
+        ",XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle"
+        ",XF86MonBrightnessUp, exec, swayosd-client --brightness raise --device intel_backlight"
+        ",XF86MonBrightnessDown, exec, swayosd-client --brightness lower --device intel_backlight"
       ];
 
       general = {
@@ -136,8 +137,8 @@
         enabled = true;
         bezier = "quick,0.15,0,0.1,1";
         animation = [
-          "windows, 1, 2, quick"
-          "windowsOut, 1, 2, default, popin 80%"
+          "windows, 1, 1, quick"
+          "windowsOut, 1, 1, default"
           "workspaces, 1, 4, default"
         ];
       };
