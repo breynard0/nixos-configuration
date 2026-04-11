@@ -12,6 +12,9 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
+    # Configure graphics drivers
+    ./config/graphics.nix
+
     # # Set up SDDM
     ./config/sddm.nix
 
@@ -85,6 +88,12 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Make use of said allowed unfree packages
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+  };
 
   # Link portal definitions
   environment.pathsToLink = [
