@@ -6,7 +6,8 @@
     profiles.default.userSettings = {
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nixd";
-      "github.copilot.enable.*"= false;
+      "github.copilot.enable.*" = false;
+      "git.confirmSync" = false;
     };
     profiles.default.extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
