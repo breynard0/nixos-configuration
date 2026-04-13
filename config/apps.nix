@@ -4,7 +4,7 @@
     # System app suite
     firefox
     kdePackages.qtsvg
-    kdePackages.dolphin
+    nemo
     lite-xl
     kdePackages.okular
     qimgv

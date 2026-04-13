@@ -201,6 +201,10 @@
     };
   };
 
+  # Hyprlock configuration
+  home.file.".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
+  home.file."Pictures/lock_wallpaper.jpg".source = ../resources/dog_wallpaper.jpg;
+
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs-unstable; [
