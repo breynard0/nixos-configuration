@@ -15,8 +15,11 @@
     # Configure graphics drivers
     ./config/graphics.nix
 
-    # # Set up SDDM
+    # Set up SDDM
     ./config/sddm.nix
+
+    # Configure pipewire
+    ./config/pipewire.nix
 
     # Battery stuff
     ./config/battery.nix

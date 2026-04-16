@@ -18,9 +18,8 @@
       favicon_service = "twenty";
     };
     extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
-      #bluetooth
+      bluetooth
       nix
-      pulseaudio
       wifi-commander
     ];
   };
