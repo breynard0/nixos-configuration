@@ -81,6 +81,7 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+    pactl
 
     # nix dev tools
     nixd
