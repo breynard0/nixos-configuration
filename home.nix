@@ -13,6 +13,7 @@
     ./config/gtk.nix
     ./config/terminal.nix
     ./config/apps.nix
+    ./config/defaults.nix
     ./config/jetbrains.nix
   ];
 
