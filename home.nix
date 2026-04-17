@@ -87,6 +87,8 @@
     nixfmt
     nh
 
+    pavucontrol
+
     # Fonts
     nerd-fonts.jetbrains-mono
   ];
