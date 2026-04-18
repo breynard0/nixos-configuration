@@ -8,6 +8,7 @@
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/discord" = "vesktop.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
       "application/pdf" = "okularApplication_pdf.desktop";
       "image/*" = "qimgv.desktop";
