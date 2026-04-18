@@ -90,6 +90,8 @@
 
     pavucontrol
 
+    (callPackage ./pkgs/helium.nix {})
+
     # Fonts
     nerd-fonts.jetbrains-mono
   ];
