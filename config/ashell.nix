@@ -14,7 +14,7 @@
           "Workspaces"
         ];
         right = [
-          "MediaPlayer"
+          # "MediaPlayer"
           "SystemInfo"
           [
             "Clock"

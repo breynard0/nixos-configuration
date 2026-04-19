@@ -28,5 +28,6 @@
     obsidian
     stm32cubemx
     krita
+    prismlauncher
   ];
 }
