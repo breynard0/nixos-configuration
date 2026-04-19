@@ -7,7 +7,7 @@
   imports = [
     ./config/hypr.nix
     ./config/vicinae.nix
-    ./config/ironbar.nix
+    ./config/ashell.nix
     ./config/screen_display.nix
     ./config/vscode.nix
     ./config/gtk.nix
@@ -89,6 +89,8 @@
     nh
 
     pavucontrol
+
+    ashell
 
     (callPackage ./pkgs/helium.nix {})
 
