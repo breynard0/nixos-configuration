@@ -30,7 +30,6 @@
     p7zip
 
     # utils
-    fish
     starship
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
@@ -120,6 +119,7 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    enableBashIntegration = true;
   };
 
   # This value determines the home Manager release that your
