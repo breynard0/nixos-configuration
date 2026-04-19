@@ -16,9 +16,10 @@
         right = [
           "MediaPlayer"
           "SystemInfo"
-          "Tempo"
-          "Privacy"
-          "Settings"
+          [
+            "Clock"
+            "Settings"
+          ]
         ];
       };
       appearance = {
