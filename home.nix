@@ -92,7 +92,7 @@
 
     ashell
 
-    (callPackage ./pkgs/helium.nix {})
+    (callPackage ./pkgs/helium.nix { })
 
     # Fonts
     nerd-fonts.jetbrains-mono
@@ -107,6 +107,19 @@
     init.defaultBranch = "main";
     user.name = "breynard";
     user.email = "dev@breynard.net";
+  };
+
+  home.shellAliases = {
+    nd = "nix develop --command fish";
+  };
+
+  programs.fish.functions = {
+    projectinit = "nix flake init -t github:the-nix-way/dev-templates#$argv[1]";
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
   };
 
   # This value determines the home Manager release that your
