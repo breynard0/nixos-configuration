@@ -8,6 +8,7 @@
     lite-xl
     kdePackages.okular
     qimgv
+    pdfarranger
 
     # Other apps
     vesktop
