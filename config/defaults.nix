@@ -10,7 +10,7 @@
       "x-scheme-handler/about" = "firefox.desktop";
       "x-scheme-handler/discord" = "vesktop.desktop";
       "x-scheme-handler/unknown" = "firefox.desktop";
-      "application/pdf" = "okularApplication_pdf.desktop";
+      "application/pdf" = "org.gnome.Evince.desktop";
       "image/*" = "qimgv.desktop";
     };
   };

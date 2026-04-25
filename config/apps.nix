@@ -6,7 +6,7 @@
     kdePackages.qtsvg
     nemo
     lite-xl
-    kdePackages.okular
+    evince
     qimgv
     pdfarranger
 
