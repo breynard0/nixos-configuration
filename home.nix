@@ -89,6 +89,7 @@
     nh
 
     pavucontrol
+    paprefs
 
     ashell
 
