@@ -30,5 +30,6 @@
     stm32cubemx
     krita
     prismlauncher
+    linux-wifi-hotspot
   ];
 }

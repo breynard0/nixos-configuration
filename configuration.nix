@@ -4,6 +4,7 @@
 
 {
   pkgs,
+  options,
   ...
 }:
 
@@ -56,7 +57,10 @@
   nix.settings.download-buffer-size = 4294967296; # 4 GB
 
   # Set your time zone.
-  time.timeZone = "America/Halifax";
+  services.automatic-timezoned.enable = true;
+
+  # NTP
+  networking.timeServers = options.networking.timeServers.default;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
@@ -78,6 +82,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
   };
 
@@ -114,6 +119,9 @@
     kitty
     alacritty
   ];
+
+  # Docker!
+  virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
