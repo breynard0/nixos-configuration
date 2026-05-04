@@ -15,6 +15,7 @@
     ./config/apps.nix
     ./config/defaults.nix
     ./config/jetbrains.nix
+    ./config/zed.nix
   ];
 
   home.username = "breynard";

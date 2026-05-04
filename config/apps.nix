@@ -13,7 +13,6 @@
     # Other apps
     vesktop
     spotify
-    rnote
     speedcrunch
     blender
     slack

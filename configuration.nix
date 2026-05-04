@@ -118,10 +118,20 @@
 
     kitty
     alacritty
+
+    hplip
   ];
 
   # Docker!
   virtualisation.docker.enable = true;
+
+  # Enable printing
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
