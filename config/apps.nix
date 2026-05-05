@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     # System app suite
     firefox
+    tor-browser
     kdePackages.qtsvg
     nemo
     lite-xl
@@ -30,5 +31,6 @@
     krita
     prismlauncher
     linux-wifi-hotspot
+    ltspice
   ];
 }

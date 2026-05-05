@@ -133,6 +133,23 @@
     openFirewall = true;
   };
 
+  # Enable Tor
+  services.tor = {
+    enable = true;
+    openFirewall = true;
+    relay = {
+      enable = true;
+      role = "relay";
+    };
+    settings = {
+      ContactInfo = "dev@breynard.net";
+      Nickname = "breynard";
+      ORPort = 9001;
+      ControlPort = 9051;
+      BandWidthRate = "1 MBytes";
+    };
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
