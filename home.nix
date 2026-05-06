@@ -117,6 +117,7 @@
 
   programs.fish.functions = {
     projectinit = "nix flake init -t github:the-nix-way/dev-templates#$argv[1]";
+    lsapps = "ls /etc/profiles/per-user/$(id -n -u)/share/applications";
   };
 
   programs.direnv = {
