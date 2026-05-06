@@ -10,6 +10,7 @@
     evince
     qimgv
     pdfarranger
+    kdePackages.ark
 
     # Other apps
     vesktop
