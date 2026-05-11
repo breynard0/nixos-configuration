@@ -33,5 +33,6 @@
     prismlauncher
     linux-wifi-hotspot
     ltspice
+    kdePackages.filelight
   ];
 }
