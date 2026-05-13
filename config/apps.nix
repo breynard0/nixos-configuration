@@ -34,5 +34,6 @@
     linux-wifi-hotspot
     ltspice
     kdePackages.filelight
+    simulide
   ];
 }
