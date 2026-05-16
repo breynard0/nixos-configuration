@@ -49,7 +49,7 @@
         "$mainMod, L, exec, hyprlock"
 
         "$mainMod SHIFT, Q, killactive"
-        "$mainMod SHIFT, V, togglefloating"
+        "$mainMod, V, togglefloating"
         "$mainMod SHIFT, J, togglesplit"
 
         "$mainMod, C, exec, vesktop"
