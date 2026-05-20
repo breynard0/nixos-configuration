@@ -95,6 +95,7 @@
     ashell
 
     (callPackage ./pkgs/helium.nix { })
+    (callPackage ./pkgs/stm32cubeprogrammer.nix { })
 
     # Fonts
     nerd-fonts.jetbrains-mono

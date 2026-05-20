@@ -4,7 +4,7 @@
 {
   programs.ashell = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
     settings = {
       modules = {
         center = [
