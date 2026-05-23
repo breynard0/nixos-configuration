@@ -35,5 +35,6 @@
     ltspice
     kdePackages.filelight
     simulide
+    gnome-network-displays
   ];
 }
