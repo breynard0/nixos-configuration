@@ -6,6 +6,7 @@
     tor-browser
     kdePackages.qtsvg
     nemo
+    kdePackages.dolphin
     lite-xl
     evince
     qimgv
@@ -36,5 +37,6 @@
     kdePackages.filelight
     simulide
     gnome-network-displays
+    mullvad-vpn
   ];
 }
