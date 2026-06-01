@@ -51,7 +51,6 @@
 
         "$mainMod SHIFT, Q, killactive"
         "$mainMod, V, togglefloating"
-        "$mainMod SHIFT, J, togglesplit"
 
         "$mainMod, C, exec, vesktop"
         "$mainMod, M, exec, spotify"
@@ -171,7 +170,6 @@
       ];
 
       dwindle = {
-        pseudotile = true;
         preserve_split = true;
       };
 
