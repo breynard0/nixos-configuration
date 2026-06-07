@@ -6,6 +6,7 @@
 {
   imports = [
     ./config/hypr.nix
+    ./config/sway.nix
     ./config/vicinae.nix
     ./config/ashell.nix
     ./config/screen_display.nix

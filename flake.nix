@@ -19,6 +19,7 @@
     };
 
     preload-ng.url = "github:miguel-b-p/preload-ng";
+    wl-find-cursor.url = "github:cjacker/wl-find-cursor";
   };
 
   nixConfig = {
@@ -37,6 +38,7 @@
       nixpkgs-unstable,
       home-manager,
       vicinae,
+      wl-find-cursor,
       ...
     }@inputs:
     let

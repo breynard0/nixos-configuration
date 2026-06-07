@@ -100,6 +100,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  security.polkit.enable = true;
+
   # Make use of said allowed unfree packages
   programs.steam = {
     enable = true;
@@ -123,10 +125,13 @@
     alacritty
 
     hplip
+    ydotool
   ];
 
   # Docker!
   virtualisation.docker.enable = true;
+
+  programs.ydotool.enable = true;
 
   # Enable printing
   services.printing.enable = true;
