@@ -38,6 +38,5 @@
     simulide
     gnome-network-displays
     mullvad-vpn
-    lmstudio
   ];
 }
