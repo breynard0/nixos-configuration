@@ -24,6 +24,9 @@
 
     # Battery stuff
     ./config/battery.nix
+
+    # Configure Ollama
+    ./config/ollama.nix
   ];
 
   # Bootloader.
