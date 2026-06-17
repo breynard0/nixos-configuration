@@ -72,6 +72,7 @@
     htop
     iotop # io monitoring
     iftop # network monitoring
+    mission-center
 
     # system call monitoring
     strace # system call monitoring
