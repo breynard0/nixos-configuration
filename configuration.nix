@@ -16,14 +16,17 @@
     # Configure graphics drivers
     ./config/graphics.nix
 
-    # Set up SDDM
-    ./config/sddm.nix
+    # Set up GDM and GNOME
+    ./config/gnome.nix
 
     # Configure pipewire
     ./config/pipewire.nix
 
     # Battery stuff
     ./config/battery.nix
+
+    # Configure Stylix theming
+    # ./config/stylix.nix
 
     # Configure Ollama
     ./config/ollama.nix
@@ -92,18 +95,15 @@
   };
   services.udev.packages = [ pkgs.stlink ];
 
-  # Qt configuration
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };
   services.udisks2.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   security.polkit.enable = true;
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   # Make use of said allowed unfree packages
   programs.steam = {

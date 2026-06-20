@@ -5,10 +5,7 @@
 
 {
   imports = [
-    ./config/hypr.nix
-    ./config/sway.nix
     ./config/vicinae.nix
-    ./config/ashell.nix
     ./config/screen_display.nix
     ./config/vscode.nix
     ./config/gtk.nix
@@ -17,6 +14,7 @@
     ./config/defaults.nix
     ./config/jetbrains.nix
     ./config/zed.nix
+    ./config/dconf.nix
   ];
 
   home.username = "breynard";
@@ -97,7 +95,7 @@
     ashell
 
     (callPackage ./pkgs/helium.nix { })
-    (callPackage ./pkgs/stm32cubeprogrammer.nix { })
+    # (callPackage ./pkgs/stm32cubeprogrammer.nix { })
 
     # Fonts
     nerd-fonts.jetbrains-mono
@@ -137,5 +135,5 @@
   # You can update home Manager without changing this value. See
   # the home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 }

@@ -4,17 +4,14 @@
     # System app suite
     firefox
     tor-browser
-    kdePackages.qtsvg
-    nemo
-    kdePackages.dolphin
     lite-xl
     evince
-    qimgv
     pdfarranger
-    kdePackages.ark
+    dconf-editor
+    gnome-boxes
 
     # Other apps
-    vesktop
+    equibop
     spotify
     speedcrunch
     blender

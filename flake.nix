@@ -2,16 +2,18 @@
   description = "Main System Configuration Flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-old.url = "github:nixos/nixpkgs?ref=nixos-25.11";
 
     vicinae = {
       url = "github:vicinaehq/vicinae";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     vicinae-extensions = {
       url = "github:vicinaehq/extensions";
@@ -19,7 +21,6 @@
     };
 
     preload-ng.url = "github:miguel-b-p/preload-ng";
-    wl-find-cursor.url = "github:cjacker/wl-find-cursor";
   };
 
   nixConfig = {
@@ -38,7 +39,6 @@
       nixpkgs-unstable,
       home-manager,
       vicinae,
-      wl-find-cursor,
       ...
     }@inputs:
     let
@@ -60,7 +60,11 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
-              inherit inputs pkgs-unstable vicinae;
+              inherit
+                inputs
+                pkgs-unstable
+                vicinae
+                ;
             };
             home-manager.sharedModules = [
               vicinae.homeManagerModules.default
