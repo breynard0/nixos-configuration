@@ -11,6 +11,9 @@
     gnomeExtensions.all-in-one-clipboard
     gnomeExtensions.color-picker
     gnomeExtensions.emoji-copy
+    gnomeExtensions.battery-time-percentage-compact
+    gnomeExtensions.gsconnect
+    gnomeExtensions.vitals
   ];
 
   qt = {

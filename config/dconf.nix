@@ -13,6 +13,9 @@
           pkgs.gnomeExtensions.all-in-one-clipboard.extensionUuid
           pkgs.gnomeExtensions.color-picker.extensionUuid
           pkgs.gnomeExtensions.emoji-copy.extensionUuid
+          pkgs.gnomeExtensions.battery-time-percentage-compact.extensionUuid
+          pkgs.gnomeExtensions.gsconnect.extensionUuid
+          pkgs.gnomeExtensions.vitals.extensionUuid
         ];
       };
       "org/gnome/shell" = {
@@ -119,6 +122,7 @@
         window-swap-last-active = [ ];
         window-toggle-float = [ ];
         window-snap-center = [ ];
+        window-focus-right = [ ];
       };
     };
   };
