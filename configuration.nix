@@ -25,9 +25,6 @@
     # Battery stuff
     ./config/battery.nix
 
-    # Configure Stylix theming
-    # ./config/stylix.nix
-
     # Configure Ollama
     ./config/ollama.nix
   ];
@@ -129,6 +126,8 @@
 
     hplip
     ydotool
+
+    duplicity
   ];
 
   # Docker!
