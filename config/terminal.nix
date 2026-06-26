@@ -11,6 +11,7 @@
         blinking = "On";
       };
       window.opacity = 0.95;
+      window.decorations = "None";
       font.size = 10.0;
     };
   };

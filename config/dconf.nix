@@ -126,4 +126,21 @@
       };
     };
   };
+
+  # Shrink and clear titlebars
+  home.file.".config/gtk-3.0/gtk.css".text = ''
+    window.ssd headerbar.titlebar {
+      padding-top: 4px;
+      padding-bottom: 4px;
+      min-height: 0;
+    }
+    window.ssd headerbar.titlebar button.titlebutton {
+        padding: 0px;
+        min-height: 0;
+        min-width: 0;
+    }
+  '';
+  dconf.settings."org/gnome/desktop/wm/preferences" = {
+    button-layout = "appmenu:";
+  };
 }
