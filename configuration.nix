@@ -123,6 +123,7 @@
 
     kitty
     alacritty
+    bash
 
     hplip
     ydotool
