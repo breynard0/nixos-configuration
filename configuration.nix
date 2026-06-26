@@ -131,6 +131,12 @@
     duplicity
   ];
 
+  # Backup GUI
+  services.duplicati = {
+    enable = true;
+    user = "breynard";
+  };
+
   # Docker!
   virtualisation.docker.enable = true;
 
