@@ -36,5 +36,6 @@
     gnome-network-displays
     mullvad-vpn
     popsicle
+    wxformbuilder
   ];
 }

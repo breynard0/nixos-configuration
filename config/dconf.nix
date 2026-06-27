@@ -16,6 +16,7 @@
           pkgs.gnomeExtensions.battery-time-percentage-compact.extensionUuid
           pkgs.gnomeExtensions.gsconnect.extensionUuid
           pkgs.gnomeExtensions.vitals.extensionUuid
+          pkgs.gnomeExtensions.rounded-window-corners-reborn.extensionUuid
         ];
       };
       "org/gnome/shell" = {

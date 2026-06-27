@@ -68,6 +68,8 @@
   # NTP
   networking.timeServers = options.networking.timeServers.default;
 
+  programs.nix-ld.enable = true;
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
