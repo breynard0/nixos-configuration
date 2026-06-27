@@ -25,6 +25,9 @@
     # Battery stuff
     ./config/battery.nix
 
+    # Backups
+    ./config/backup.nix
+
     # Configure Ollama
     ./config/ollama.nix
   ];
@@ -128,14 +131,8 @@
     hplip
     ydotool
 
-    duplicity
+    restic
   ];
-
-  # Backup GUI
-  services.duplicati = {
-    enable = true;
-    user = "breynard";
-  };
 
   # Docker!
   virtualisation.docker.enable = true;
