@@ -37,5 +37,6 @@
     mullvad-vpn
     popsicle
     wxformbuilder
+    bitwarden-desktop
   ];
 }
