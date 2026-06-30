@@ -27,6 +27,10 @@
         ${pkgs.jetbrains.clion}/bin/clion "$@" >/dev/null 2>&1 &
       '')
 
+      (pkgs.writeShellScriptBin "goland" ''
+        ${pkgs.jetbrains.goland}/bin/goland "$@" >/dev/null 2>&1 &
+      '')
+
       pkgs.jetbrains.jdk
     ];
 }
