@@ -70,6 +70,11 @@
 
   programs.nix-ld.enable = true;
 
+  # Needed for Bitwarden desktop
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
