@@ -19,8 +19,6 @@
       url = "github:vicinaehq/extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    preload-ng.url = "github:miguel-b-p/preload-ng";
   };
 
   nixConfig = {
@@ -71,11 +69,6 @@
             ];
 
             home-manager.users.breynard = import ./home.nix;
-          }
-
-          inputs.preload-ng.nixosModules.default
-          {
-            services.preload-ng.enable = true;
           }
         ];
       };
