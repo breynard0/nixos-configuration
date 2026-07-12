@@ -38,5 +38,7 @@
     popsicle
     wxformbuilder
     bitwarden-desktop
+    graphite
+    ckan
   ];
 }
