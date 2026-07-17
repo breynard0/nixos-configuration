@@ -40,5 +40,6 @@
     bitwarden-desktop
     graphite
     ckan
+    winboat
   ];
 }
