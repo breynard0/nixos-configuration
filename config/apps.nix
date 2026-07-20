@@ -38,7 +38,7 @@
     popsicle
     wxformbuilder
     bitwarden-desktop
-    graphite
+    inkscape
     ckan
     winboat
   ];
