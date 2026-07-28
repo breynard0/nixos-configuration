@@ -99,6 +99,9 @@
       "docker"
       "dialout"
       "plugdev"
+      "kvm"
+      "libvirt"
+      "input"
     ];
   };
   services.udev.packages = [ pkgs.stlink ];
