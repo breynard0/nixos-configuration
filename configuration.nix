@@ -30,6 +30,9 @@
 
     # Configure Ollama
     ./config/ollama.nix
+
+    # 1Password desktop
+    ./config/1password.nix
   ];
 
   # Bootloader.

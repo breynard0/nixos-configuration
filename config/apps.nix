@@ -10,6 +10,7 @@
     pdfarranger
     dconf-editor
     gnome-boxes
+    quickgui
 
     # Other apps
     equibop
