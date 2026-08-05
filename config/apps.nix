@@ -10,7 +10,6 @@
     pdfarranger
     dconf-editor
     gnome-boxes
-    quickgui
 
     # Other apps
     equibop
@@ -43,5 +42,6 @@
     inkscape
     ckan
     winboat
+    wireshark
   ];
 }
