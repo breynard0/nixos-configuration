@@ -38,7 +38,6 @@
     mullvad-vpn
     popsicle
     wxformbuilder
-    bitwarden-desktop
     inkscape
     ckan
     winboat
@@ -46,5 +45,6 @@
     quickemu
     obs-studio
     wineWowPackages.full
+    claude-code
   ];
 }
