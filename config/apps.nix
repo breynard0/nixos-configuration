@@ -45,5 +45,6 @@
     wireshark
     quickemu
     obs-studio
+    wineWowPackages.full
   ];
 }
