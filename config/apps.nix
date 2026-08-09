@@ -44,7 +44,8 @@
     wireshark
     quickemu
     obs-studio
-    wineWowPackages.full
+    wineWow64Packages.full
+    ghidra
     claude-code
   ];
 }
