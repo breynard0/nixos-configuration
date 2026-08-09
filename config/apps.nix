@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     # System app suite
     firefox
-    inputs.helium.packages.${pkgs.system}.default
+    inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
     tor-browser
     lite-xl
     evince
