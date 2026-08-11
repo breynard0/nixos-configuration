@@ -46,6 +46,7 @@
     obs-studio
     wineWow64Packages.full
     ghidra
+    imhex
     claude-code
   ];
 }

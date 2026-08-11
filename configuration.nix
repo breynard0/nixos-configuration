@@ -5,6 +5,7 @@
 {
   pkgs,
   options,
+  config,
   ...
 }:
 
@@ -57,6 +58,8 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.kernelModules = [ "vhci-hcd" ];
 
   networking.hostName = "breynard-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -146,6 +149,11 @@
     ydotool
 
     restic
+
+    config.boot.kernelPackages.usbip
+
+    mfcl8690cdwlpr
+    mfcl8690cdwcupswrapper
   ];
 
   # Docker!
