@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     # System app suite
     firefox
+    chromium # Required by the JetBrains markdown plugin preview
     inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
     tor-browser
     lite-xl
@@ -17,6 +18,7 @@
     speedcrunch
     blender
     slack
+    zed-editor-fhs
     gtkwave
     godot
     musescore
@@ -44,6 +46,7 @@
     wireshark
     quickemu
     obs-studio
+    davinci-resolve
     wineWow64Packages.full
     ghidra
     imhex

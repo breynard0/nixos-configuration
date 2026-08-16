@@ -14,6 +14,7 @@
     gnomeExtensions.battery-time-percentage-compact
     gnomeExtensions.gsconnect
     gnomeExtensions.vitals
+    gnomeExtensions.claude-code-usage
   ];
 
   qt = {
