@@ -18,7 +18,6 @@
     speedcrunch
     blender
     slack
-    zed-editor-fhs
     gtkwave
     godot
     musescore
