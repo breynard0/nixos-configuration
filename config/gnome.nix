@@ -15,6 +15,7 @@
     gnomeExtensions.gsconnect
     gnomeExtensions.vitals
     gnomeExtensions.claude-code-usage
+    gnomeExtensions.spotify-controls
   ];
 
   qt = {
