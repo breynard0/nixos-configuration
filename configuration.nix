@@ -74,7 +74,12 @@
   # NTP
   networking.timeServers = options.networking.timeServers.default;
 
+  # LocalSend
+  networking.firewall.allowedTCPPorts = [ 53317 ];
+  networking.firewall.allowedUDPPorts = [ 53317 ];
+
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [ stdenv.cc.cc.lib zlib ];
 
   # Needed for Bitwarden desktop
   nixpkgs.config.permittedInsecurePackages = [
@@ -149,6 +154,8 @@
     ydotool
 
     restic
+
+    protonvpn-gui
 
     config.boot.kernelPackages.usbip
 
