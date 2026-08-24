@@ -37,6 +37,7 @@
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
     gcc
+    gh # GitHub CLI
 
     # networking tools
     mtr # A network diagnostic tool
@@ -107,6 +108,8 @@
     init.defaultBranch = "main";
     user.name = "breynard";
     user.email = "dev@breynard.net";
+    credential."https://github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential";
+    credential."https://gist.github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential";
   };
 
   home.shellAliases = {

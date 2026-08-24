@@ -6,6 +6,7 @@
   pkgs,
   options,
   config,
+  inputs,
   ...
 }:
 
@@ -48,8 +49,14 @@
 
   # Enable cache
   nix.settings = {
-    substituters = [ "https://cache.nixos.org" ];
-    trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
+    substituters = [
+      "https://cache.nixos.org"
+      "https://cache.forall.systems"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "cache.forall.systems:5PmD7QO4MSF8YgyRZtkSGXRDo96H3bybIf2SsQh8ScI="
+    ];
   };
   nix.settings.trusted-users = [
     "root"
@@ -73,6 +80,8 @@
 
   # NTP
   networking.timeServers = options.networking.timeServers.default;
+
+  networking.firewall.enable = false;
 
   # LocalSend
   networking.firewall.allowedTCPPorts = [ 53317 ];
@@ -121,6 +130,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.overlays = [ inputs.affinity-nix.overlays.default ];
 
   security.polkit.enable = true;
 
