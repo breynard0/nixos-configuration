@@ -1,6 +1,18 @@
 {
+  lib,
+  pkgs,
   ...
 }:
+let
+  pythonWheelLibs = lib.makeLibraryPath (
+    with pkgs;
+    [
+      stdenv.cc.cc.lib
+      zlib
+      zstd
+    ]
+  );
+in
 {
   programs.alacritty = {
     enable = true;
@@ -17,6 +29,9 @@
 
   programs.fish = {
     enable = true;
+    shellInit = ''
+      set -gx LD_LIBRARY_PATH (string join : $LD_LIBRARY_PATH ${pythonWheelLibs})
+    '';
     interactiveShellInit = ''
       set fish_greeting
 
