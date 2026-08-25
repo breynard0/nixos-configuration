@@ -26,6 +26,8 @@
     };
 
     affinity-nix.url = "github:mrshmllow/affinity-nix";
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
   nixConfig = {
@@ -61,6 +63,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
+          inputs.nix-flatpak.nixosModules.nix-flatpak
 
           home-manager.nixosModules.home-manager
           {

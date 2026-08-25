@@ -35,6 +35,9 @@
 
     # 1Password desktop
     ./config/1password.nix
+
+    # Declarative Flatpak apps
+    ./config/flatpak.nix
   ];
 
   # Bootloader.
