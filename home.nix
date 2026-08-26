@@ -38,6 +38,7 @@
     fzf # A command-line fuzzy finder
     gcc
     gh # GitHub CLI
+    surge-cli # CLI for the surge.sh CDN
 
     # networking tools
     mtr # A network diagnostic tool
