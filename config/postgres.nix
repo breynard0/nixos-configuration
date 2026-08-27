@@ -7,6 +7,6 @@
       #type database  DBuser  auth-method
       local all       all     trust
     '';
-    package = pkgs.postgresql.pg_config;
+    package = pkgs.postgresql_16;
   };
 }
