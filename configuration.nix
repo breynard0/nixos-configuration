@@ -38,6 +38,9 @@
 
     # Declarative Flatpak apps
     ./config/flatpak.nix
+
+    # Set up Postgres for development
+    ./config/postgres.nix
   ];
 
   # Bootloader.
