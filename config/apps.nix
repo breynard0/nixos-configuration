@@ -50,6 +50,7 @@
     wineWow64Packages.full
     ghidra
     imhex
+    dbeaver-bin
     claude-code
   ];
 }
