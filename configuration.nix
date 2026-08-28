@@ -44,7 +44,13 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    device = "nodev";
+    useOSProber = true;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable Flakes
@@ -94,12 +100,16 @@
   networking.firewall.allowedUDPPorts = [ 53317 ];
 
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [ stdenv.cc.cc.lib zlib ];
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib
+    zlib
+  ];
 
   # Needed for Bitwarden desktop
   nixpkgs.config.permittedInsecurePackages = [
     "electron-39.8.10"
     "electron-40.10.5"
+    "ventoy-1.1.12"
   ];
 
   # Select internationalisation properties.
@@ -171,6 +181,8 @@
     ydotool
 
     restic
+
+    ventoy
 
     protonvpn-gui
 
