@@ -17,6 +17,7 @@
           pkgs.gnomeExtensions.gsconnect.extensionUuid
           pkgs.gnomeExtensions.vitals.extensionUuid
           pkgs.gnomeExtensions.claude-code-usage.extensionUuid
+          pkgs.gnomeExtensions.spotify-controls.extensionUuid
         ];
       };
       "org/gnome/shell" = {
