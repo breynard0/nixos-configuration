@@ -24,6 +24,7 @@
     muse-sounds-manager
     thunderbird
     libreoffice
+    onlyoffice-desktopeditors
     kicad
     gimp
     localsend

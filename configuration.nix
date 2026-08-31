@@ -41,6 +41,9 @@
 
     # Set up Postgres for development
     ./config/postgres.nix
+
+    # iPhone integration
+    ./config/tether.nix
   ];
 
   # Bootloader.
