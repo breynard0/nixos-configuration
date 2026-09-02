@@ -43,7 +43,6 @@
     wxformbuilder
     inkscape
     ckan
-    winboat
     wireshark
     quickemu
     obs-studio
