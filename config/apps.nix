@@ -52,5 +52,7 @@
     imhex
     dbeaver-bin
     claude-code
+    ventoy-full
+    audacity
   ];
 }
