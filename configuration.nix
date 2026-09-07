@@ -128,6 +128,12 @@
     variant = "";
   };
 
+  # Configure appimages
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.breynard = {
     isNormalUser = true;

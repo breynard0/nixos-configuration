@@ -51,6 +51,7 @@
     ghidra
     imhex
     dbeaver-bin
+    beekeeper-studio
     claude-code
     ventoy-full
     audacity
