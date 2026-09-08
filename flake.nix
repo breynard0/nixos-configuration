@@ -27,6 +27,8 @@
 
     affinity-nix.url = "github:mrshmllow/affinity-nix";
 
+    nixvim.url = "github:nix-community/nixvim/nixos-26.05";
+
     nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
@@ -48,6 +50,7 @@
       nixpkgs-unstable,
       home-manager,
       vicinae,
+      nixvim,
       ...
     }@inputs:
     let
@@ -78,6 +81,7 @@
             };
             home-manager.sharedModules = [
               vicinae.homeManagerModules.default
+              nixvim.homeModules.nixvim
             ];
 
             home-manager.users.breynard = import ./home.nix;

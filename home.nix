@@ -15,6 +15,7 @@
     ./config/jetbrains.nix
     ./config/zed.nix
     ./config/helix.nix
+    ./config/nixvim.nix
     ./config/dconf.nix
     ./config/pi.nix
   ];
