@@ -39,6 +39,7 @@
     yq-go # yaml processor https://github.com/mikefarah/yq
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
+    wl-clipboard # wl-copy / wl-paste for the Wayland clipboard
     gcc
     gh # GitHub CLI
     surge-cli # CLI for the surge.sh CDN
@@ -52,6 +53,7 @@
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
     ipcalc # it is a calculator for the IPv4/v6 addresses
+    ngrok # secure tunnels to localhost
 
     # misc
     cowsay
