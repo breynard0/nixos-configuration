@@ -157,6 +157,8 @@
       settings.hidden.file_browser = true;
     };
 
+    plugins.grug-far.enable = true;
+
     plugins.claudecode = {
       enable = true;
       settings.terminal.split_side = "right";
@@ -215,6 +217,10 @@
         lspBufAction = "rename";
       }
       {
+        key = "<F2>";
+        lspBufAction = "rename";
+      }
+      {
         key = "<leader>ca";
         mode = [
           "n"
@@ -270,7 +276,29 @@
       settings.condition.__raw = "function() return not vim.g.ai_enabled end";
     };
 
-    plugins.neo-tree.enable = true;
+    plugins.neo-tree = {
+      enable = true;
+      settings = {
+        window = {
+          position = "right";
+          width = 36;
+        };
+        default_component_configs.diagnostics = {
+          symbols = {
+            error = "";
+            warn = "";
+            info = "";
+            hint = "";
+          };
+          highlights = {
+            error = "DiagnosticSignError";
+            warn = "DiagnosticSignWarn";
+            info = "DiagnosticSignInfo";
+            hint = "DiagnosticSignHint";
+          };
+        };
+      };
+    };
 
     plugins.lualine = {
       enable = true;
@@ -337,6 +365,8 @@
     plugins.vim-dadbod.enable = true;
     plugins.vim-dadbod-ui.enable = true;
     plugins.vim-dadbod-completion.enable = true;
+    globals.mapleader = " ";
+    globals.maplocalleader = " ";
     globals.db_ui_use_nerd_fonts = 1;
 
     plugins.wakatime.enable = true;
@@ -348,6 +378,7 @@
           local lines = {
             "-- General --",
             "<C-f>         Find files (Telescope)",
+            "<C-S-f>       Search text across project (Telescope)",
             "<C-v>         Open Telescope selection in vertical split",
             "<C-x>         Open Telescope selection in horizontal split",
             "<C-S-Left>    Previous buffer",
@@ -377,6 +408,8 @@
             "gt            Go to type definition",
             "K             Hover docs",
             "<C-k>         Toggle signature-help popup (insert mode)",
+            "<F2>          Rename symbol",
+            "<S-F2>        Project-wide find and replace (grug-far)",
             "<leader>rn    Rename symbol",
             "<leader>ca    Code action",
             "[d / ]d       Previous / next diagnostic",
@@ -613,6 +646,14 @@
       {
         key = "<C-f>";
         action = "<cmd>Telescope find_files<cr>";
+      }
+      {
+        key = "<C-S-f>";
+        action = "<cmd>Telescope live_grep<cr>";
+      }
+      {
+        key = "<S-F2>";
+        action.__raw = "function() require('grug-far').open({ prefills = { search = vim.fn.expand('<cword>') } }) end";
       }
       {
         key = "<leader>gg";
