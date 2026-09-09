@@ -24,6 +24,7 @@ in
       };
       window.opacity = 0.95;
       font.size = 10.0;
+      font.normal.family = "JetBrainsMono Nerd Font Mono";
     };
   };
 

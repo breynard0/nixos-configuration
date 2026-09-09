@@ -4,6 +4,8 @@
   programs.vscode = {
     enable = true;
     profiles.default.userSettings = {
+      "editor.fontFamily" = "'JetBrainsMono Nerd Font Mono', monospace";
+      "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font Mono', monospace";
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nixd";
       "github.copilot.enable.*" = false;

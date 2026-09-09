@@ -101,6 +101,7 @@
 
     # Fonts
     nerd-fonts.jetbrains-mono
+    adwaita-fonts
   ];
 
   # basic configuration of git, please change to your own

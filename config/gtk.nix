@@ -21,7 +21,7 @@
     };
 
     font = {
-      name = "Sans";
+      name = "Adwaita Sans";
       size = 11;
     };
 
@@ -41,6 +41,12 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       "color-scheme" = "prefer-dark";
+      "font-name" = "Adwaita Sans 11";
+      "document-font-name" = "Adwaita Sans 11";
+      "monospace-font-name" = "JetBrainsMono Nerd Font Mono 10";
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      "titlebar-font" = "Adwaita Sans Bold 11";
     };
   };
 }
