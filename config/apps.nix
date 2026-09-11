@@ -71,5 +71,6 @@ in
     emdash
     ventoy-full
     audacity
+    github-desktop
   ];
 }
