@@ -17,15 +17,6 @@
     openFirewall = true;
   };
 
-  # QZ Tray sends ZPL straight to the label printer, so this stays a raw queue.
-  hardware.printers.ensurePrinters = [
-    {
-      name = "Zebra_wireless";
-      deviceUri = "ipp://10.40.77.236:631/printers/Zebra__but_wireless_";
-      model = "raw";
-    }
-  ];
-
   hardware.sane = {
     enable = true;
     extraBackends = [ pkgs.hplip ];

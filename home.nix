@@ -11,7 +11,6 @@
     ./config/terminal.nix
     ./config/apps.nix
     ./config/defaults.nix
-    ./config/firefox.nix
     ./config/jetbrains.nix
     ./config/zed.nix
     ./config/helix.nix
@@ -99,10 +98,6 @@
     pavucontrol
     paprefs
 
-
-    # Fonts
-    nerd-fonts.jetbrains-mono
-    adwaita-fonts
   ];
 
   # basic configuration of git, please change to your own

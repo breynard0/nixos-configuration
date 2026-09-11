@@ -1,4 +1,21 @@
 { pkgs, inputs, ... }:
+let
+  # Spotify's Chromium paints its own Wayland decorations and they come out a
+  # plain blue. The nixpkgs launcher unsets DISPLAY whenever NIXOS_OZONE_WL=1,
+  # so clearing that (and pinning the Ozone backend) puts it back on Xwayland,
+  # where mutter draws the normal titlebar.
+  spotifyX11 = pkgs.symlinkJoin {
+    name = "spotify-xwayland";
+    paths = [ pkgs.spotify ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/spotify \
+        --unset NIXOS_OZONE_WL \
+        --add-flags "--ozone-platform=x11"
+    '';
+  };
+  emdash = pkgs.callPackage ../pkgs/emdash.nix { };
+in
 {
   home.packages = with pkgs; [
     # System app suite
@@ -13,7 +30,7 @@
 
     # Other apps
     equibop
-    spotify
+    spotifyX11
     speedcrunch
     blender
     slack
@@ -50,6 +67,8 @@
     dbeaver-bin
     beekeeper-studio
     claude-code
+    codex
+    emdash
     ventoy-full
     audacity
   ];

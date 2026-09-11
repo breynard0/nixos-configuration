@@ -34,8 +34,8 @@
         "xdg-config/qt6ct:ro"
       ];
       Environment = {
-        GTK_THEME = "Qogir-Dark";
-        XCURSOR_THEME = "Qogir-Dark";
+        GTK_THEME = "WhiteSur-Dark-blue";
+        XCURSOR_THEME = "Adwaita";
         XCURSOR_SIZE = "24";
         QT_QPA_PLATFORMTHEME = "qt6ct";
         QT_STYLE_OVERRIDE = "kvantum";

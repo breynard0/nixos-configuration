@@ -10,6 +10,10 @@ restic backup \
   --exclude /home/breynard/.npm/ \
   --exclude /home/breynard/.lmstudio \
   --exclude /home/breynard/.gradle \
+  --exclude /home/breynard/.java \
+  --exclude /home/breynard/.local/share/JetBrains \
+  --exclude /home/breynard/.config/JetBrains \
+  --exclude /home/breynard/JetbrainsApps \
   --exclude /home/breynard/.ollama \
   --exclude /home/breynard/macvm \
   --exclude /home/breynard/.paradoxlauncher \

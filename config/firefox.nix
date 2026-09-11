@@ -1,17 +1,7 @@
 { ... }:
 {
-  programs.firefox = {
-    enable = true;
-    profiles.default = {
-      id = 0;
-      settings = {
-        # Built-in Dark theme. Firefox draws its own chrome and ignores GTK
-        # themes, so this is the closest match available without pinning a
-        # third-party add-on id.
-        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-        "browser.theme.toolbar-theme" = 0;
-        "browser.theme.content-theme" = 0;
-      };
-    };
-  };
+  # Deliberately a NixOS module, not a home-manager one: the home-manager
+  # firefox module manages profiles.ini, which repoints Firefox at a profile
+  # named after the attrset key and orphans the real lrqken6n.default.
+  programs.firefox.enable = true;
 }

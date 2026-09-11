@@ -42,14 +42,5 @@
     terminal = "alacritty";
   };
 
-  hardware.cpu.intel.npu.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    protontricks
-
-    # pkgs.openvino ships no executables and installs its libraries under
-    # runtime/lib/intel64, which environment.pathsToLink never links, so the
-    # Python bindings are the only usable entry point to the runtime.
-    (python3.withPackages (ps: [ ps.openvino ]))
-  ];
+  environment.systemPackages = [ pkgs.protontricks ];
 }

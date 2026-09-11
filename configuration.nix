@@ -39,6 +39,21 @@
     # Declarative Flatpak apps
     ./config/flatpak.nix
 
+    # Desktop integration bits
+    ./config/desktop.nix
+
+    # System fonts
+    ./config/fonts.nix
+
+    # Peripherals, filesystems, dev-board rules
+    ./config/hardware.nix
+
+    # Firewall
+    ./config/firewall.nix
+
+    # GC, zram, SMART monitoring
+    ./config/maintenance.nix
+
     # Set up Postgres for development
     ./config/postgres.nix
 
@@ -50,17 +65,13 @@
 
     # iPhone integration
     ./config/tether.nix
-  ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    device = "nodev";
-    useOSProber = true;
-  };
-  boot.loader.efi.canTouchEfiVariables = true;
+    # Bootloader, boot speed, swap
+    ./config/boot.nix
+
+    # Firefox
+    ./config/firefox.nix
+  ];
 
   # Enable Flakes
   nix.settings.experimental-features = [
@@ -84,11 +95,6 @@
     "breynard"
   ];
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.kernelModules = [ "vhci-hcd" ];
-
   networking.hostName = "breynard-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -101,12 +107,6 @@
 
   # NTP
   networking.timeServers = options.networking.timeServers.default;
-
-  networking.firewall.enable = false;
-
-  # LocalSend
-  networking.firewall.allowedTCPPorts = [ 53317 ];
-  networking.firewall.allowedUDPPorts = [ 53317 ];
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -194,7 +194,6 @@
 
     restic
 
-
     proton-vpn
 
     config.boot.kernelPackages.usbip
@@ -212,7 +211,6 @@
     enable = true;
     package = pkgs.wireshark;
   };
-
 
   # Enable Tor
   # services.tor = {

@@ -25,11 +25,9 @@
     "rd.systemd.show_status=false"
   ];
 
-  # Hibernation image target. The 8.8 GiB swap partition declared in
-  # hardware-configuration.nix cannot hold 30 GiB of RAM, so a larger file on
-  # the ext4 root takes priority over it.
-  # INCOMPLETE UNTIL a matching `resume_offset=` is added to boot.kernelParams:
-  # suspend-then-hibernate will hibernate but NOT resume without it.
+  # Hibernation image target: the 8.8 GiB swap partition in
+  # hardware-configuration.nix cannot hold 30 GiB of RAM. Higher priority than
+  # the partition, lower than zram, so this is only touched under real pressure.
   swapDevices = [
     {
       device = "/swapfile";
@@ -39,10 +37,18 @@
   ];
   boot.resumeDevice = "/dev/disk/by-uuid/b6730135-4f10-48ee-825e-eb9a288e6473";
 
+  systemd.sleep.settings.Sleep.HibernateDelaySec = "90min";
+
+  # No resume_offset= is needed for the swapfile: systemd writes the offset to
+  # the HibernateLocation EFI variable at hibernate time and the initrd reads it
+  # back. Both systemd-hibernate-resume and its generator are in the systemd
+  # initrd, and efivarfs is rw on this machine.
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend-then-hibernate";
     HandleSuspendKey = "suspend-then-hibernate";
   };
 
-  systemd.sleep.settings.Sleep.HibernateDelaySec = "90min";
+  # Nothing needs the network up before login, and this unit routinely costs
+  # several seconds of boot waiting on DHCP.
+  systemd.services.NetworkManager-wait-online.enable = false;
 }

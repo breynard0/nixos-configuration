@@ -1,4 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+let
+  # Forge never reads its *-border-color gschema keys: at runtime it only
+  # applies CSS class names, and its prefs UI writes colours straight into this
+  # stylesheet. So the border colours have to be set in the sheet itself.
+  # Recolours the whole Forge palette (tiled, split, stacked, tabbed, floated
+  # and the drag previews) to #3584e4, keeping each rule's alpha. The drop
+  # shadows and the tabbed background are left alone.
+  forgeStylesheet =
+    pkgs.runCommand "forge-blue-borders.css" { }
+      ''
+        sed -E 's/rgba\((236, 94, 94|255, 246, 108|247, 162, 43|1[78], 199, 224|180, 167, 214|162, 247, 43), ?([0-9.]+)\)/rgba(53, 132, 228, \2)/g' \
+          ${pkgs.gnomeExtensions.forge}/share/gnome-shell/extensions/forge@jmmaranan.com/stylesheet.css > $out
+      '';
+in
 {
   dconf = {
     enable = true;
@@ -7,18 +21,19 @@
       "org/gnome/shell" = {
         enabled-extensions = [
           pkgs.gnomeExtensions.blur-my-shell.extensionUuid
-          pkgs.gnomeExtensions.compact-top-bar.extensionUuid
           pkgs.gnomeExtensions.appindicator.extensionUuid
-          pkgs.gnomeExtensions.mosaic.extensionUuid
+          pkgs.gnomeExtensions.forge.extensionUuid
           pkgs.gnomeExtensions.all-in-one-clipboard.extensionUuid
           pkgs.gnomeExtensions.color-picker.extensionUuid
           pkgs.gnomeExtensions.emoji-copy.extensionUuid
           pkgs.gnomeExtensions.battery-time-percentage-compact.extensionUuid
           pkgs.gnomeExtensions.gsconnect.extensionUuid
           pkgs.gnomeExtensions.vitals.extensionUuid
-          pkgs.gnomeExtensions.claude-code-usage.extensionUuid
           pkgs.gnomeExtensions.spotify-controls.extensionUuid
           pkgs.gnomeExtensions.user-themes.extensionUuid
+          pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
+          pkgs.gnomeExtensions.caffeine.extensionUuid
+          pkgs.gnomeExtensions.rounded-window-corners-reborn.extensionUuid
         ];
       };
       "org/gnome/shell" = {
@@ -101,8 +116,6 @@
       };
       "org/gnome/desktop/wm/preferences" = {
         num-workspaces = 10;
-        # Mosaic has no focus-on-hover; forge focus-on-hover-enabled = true
-        focus-mode = "sloppy";
       };
       "org/gnome/shell/extensions/blur-my-shell/applications" = {
         blur = true;
@@ -110,17 +123,20 @@
       "org/gnome/shell" = {
         always-show-log-out = true;
       };
-      "org/gnome/shell/extensions/gnome-mosaic" = {
-        # Forge tiled by default; Mosaic floats by default
-        tile-by-default = true;
-        # was forge focus-border-toggle = false
-        active-hint = false;
-        # <Super>Return is alacritty, <Super>l is the screen lock
-        tile-enter = [ "<Super>KP_Enter" ];
-        focus-right = [
-          "<Super>Right"
-          "<Super>KP_Right"
-        ];
+      "org/gnome/shell/extensions/forge" = {
+        focus-on-hover-enabled = true;
+        stacked-tiling-mode-enabled = false;
+        tabbed-tiling-mode-enabled = false;
+        dnd-center-layout = "swap";
+        focus-border-toggle = true;
+        window-gap-size = lib.hm.gvariant.mkUint32 4;
+      };
+      # Blanked because these collide with bindings already claimed elsewhere.
+      "org/gnome/shell/extensions/forge/keybindings" = {
+        window-swap-last-active = [ ];
+        window-toggle-float = [ ];
+        window-snap-center = [ ];
+        window-focus-right = [ ];
       };
       "org/gnome/desktop/background" = {
         picture-uri = "file://${../resources/train_wallpaper.jpg}";
@@ -150,4 +166,6 @@
   dconf.settings."org/gnome/desktop/wm/preferences" = {
     button-layout = "appmenu:";
   };
+
+  home.file.".config/forge/stylesheet/forge/stylesheet.css".source = forgeStylesheet;
 }

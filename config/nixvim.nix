@@ -228,6 +228,16 @@
         ];
         lspBufAction = "code_action";
       }
+      # Needs the kitty keyboard protocol to reach Neovim at all; a terminal
+      # without it never sends Ctrl+. and <leader>ca stays the way in.
+      {
+        key = "<C-.>";
+        mode = [
+          "n"
+          "v"
+        ];
+        lspBufAction = "code_action";
+      }
       {
         key = "[d";
         action.__raw = "function() vim.diagnostic.jump({ count = -1, float = true }) end";
@@ -244,12 +254,46 @@
       settings = {
         snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
         completion.completeopt = "menu,menuone,noselect";
+        performance.max_view_entries = 16;
+
+        # Explicit priorities so LSP results outrank raw buffer words; buffer
+        # only joins in once there is enough of a prefix to be meaningful.
         sources = [
-          { name = "nvim_lsp"; }
-          { name = "luasnip"; }
-          { name = "path"; }
-          { name = "buffer"; }
+          {
+            name = "nvim_lsp";
+            priority = 1000;
+          }
+          {
+            name = "luasnip";
+            priority = 750;
+          }
+          {
+            name = "path";
+            priority = 500;
+          }
+          {
+            name = "buffer";
+            priority = 250;
+            keyword_length = 3;
+          }
         ];
+
+        # Default order leads with offset/exact, which buries a good fuzzy hit
+        # under whatever happens to start at the cursor. Score and previous
+        # picks come first here, then proximity in the buffer.
+        sorting = {
+          priority_weight = 2;
+          comparators = [
+            { __raw = "require('cmp').config.compare.exact"; }
+            { __raw = "require('cmp').config.compare.score"; }
+            { __raw = "require('cmp').config.compare.recently_used"; }
+            { __raw = "require('cmp').config.compare.locality"; }
+            { __raw = "require('cmp').config.compare.offset"; }
+            { __raw = "require('cmp').config.compare.kind"; }
+            { __raw = "require('cmp').config.compare.length"; }
+            { __raw = "require('cmp').config.compare.order"; }
+          ];
+        };
         mapping = {
           "<C-Space>" = "cmp.mapping.complete()";
           "<C-e>" = "cmp.mapping.abort()";
@@ -413,6 +457,7 @@
             "<S-F2>        Project-wide find and replace (grug-far)",
             "<leader>rn    Rename symbol",
             "<leader>ca    Code action",
+            "<C-.>         Quick fix / code action menu",
             "[d / ]d       Previous / next diagnostic",
             "",
             "-- Debugging --",

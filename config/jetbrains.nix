@@ -8,6 +8,7 @@ let
     "idea"
     "clion"
     "goland"
+    "datagrip"
   ];
 
   # Shadows the real package (hence lowPrio below) so the IDE launches detached from the terminal.
@@ -19,5 +20,10 @@ let
 in
 {
   home.packages =
-    map detached ides ++ map (name: lib.lowPrio pkgs.jetbrains.${name}) ides ++ [ pkgs.jetbrains.jdk ];
+    map detached ides
+    ++ map (name: lib.lowPrio pkgs.jetbrains.${name}) ides
+    ++ [
+      pkgs.jetbrains.jdk
+      pkgs.jetbrains-toolbox
+    ];
 }
