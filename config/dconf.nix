@@ -9,7 +9,7 @@
           pkgs.gnomeExtensions.blur-my-shell.extensionUuid
           pkgs.gnomeExtensions.compact-top-bar.extensionUuid
           pkgs.gnomeExtensions.appindicator.extensionUuid
-          pkgs.gnomeExtensions.forge.extensionUuid
+          pkgs.gnomeExtensions.mosaic.extensionUuid
           pkgs.gnomeExtensions.all-in-one-clipboard.extensionUuid
           pkgs.gnomeExtensions.color-picker.extensionUuid
           pkgs.gnomeExtensions.emoji-copy.extensionUuid
@@ -18,6 +18,7 @@
           pkgs.gnomeExtensions.vitals.extensionUuid
           pkgs.gnomeExtensions.claude-code-usage.extensionUuid
           pkgs.gnomeExtensions.spotify-controls.extensionUuid
+          pkgs.gnomeExtensions.user-themes.extensionUuid
         ];
       };
       "org/gnome/shell" = {
@@ -75,7 +76,6 @@
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
-          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
         ];
       };
@@ -94,11 +94,6 @@
         command = "spotify";
         binding = "<Super>m";
       };
-      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
-        name = "vicinae";
-        command = "vicinae open";
-        binding = "<Super>p";
-      };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
         name = "equibop";
         command = "equibop";
@@ -106,6 +101,8 @@
       };
       "org/gnome/desktop/wm/preferences" = {
         num-workspaces = 10;
+        # Mosaic has no focus-on-hover; forge focus-on-hover-enabled = true
+        focus-mode = "sloppy";
       };
       "org/gnome/shell/extensions/blur-my-shell/applications" = {
         blur = true;
@@ -113,18 +110,26 @@
       "org/gnome/shell" = {
         always-show-log-out = true;
       };
-      "org/gnome/shell/extensions/forge" = {
-        focus-on-hover-enabled = true;
-        stacked-tiling-mode-enabled = false;
-        tabbed-tiling-mode-enabled = false;
-        dnd-center-layout = "swap";
-        focus-border-toggle = false;
+      "org/gnome/shell/extensions/gnome-mosaic" = {
+        # Forge tiled by default; Mosaic floats by default
+        tile-by-default = true;
+        # was forge focus-border-toggle = false
+        active-hint = false;
+        # <Super>Return is alacritty, <Super>l is the screen lock
+        tile-enter = [ "<Super>KP_Enter" ];
+        focus-right = [
+          "<Super>Right"
+          "<Super>KP_Right"
+        ];
       };
-      "org/gnome/shell/extensions/forge/keybindings" = {
-        window-swap-last-active = [ ];
-        window-toggle-float = [ ];
-        window-snap-center = [ ];
-        window-focus-right = [ ];
+      "org/gnome/desktop/background" = {
+        picture-uri = "file://${../resources/train_wallpaper.jpg}";
+        picture-uri-dark = "file://${../resources/train_wallpaper.jpg}";
+        picture-options = "zoom";
+      };
+      "org/gnome/desktop/screensaver" = {
+        picture-uri = "file://${../resources/train_wallpaper.jpg}";
+        picture-options = "zoom";
       };
     };
   };

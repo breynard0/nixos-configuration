@@ -11,15 +11,6 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-old.url = "github:nixos/nixpkgs?ref=nixos-25.11";
 
-    vicinae = {
-      url = "github:vicinaehq/vicinae";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    vicinae-extensions = {
-      url = "github:vicinaehq/extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     helium = {
       url = "github:AlvaroParker/helium-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,11 +25,9 @@
 
   nixConfig = {
     extra-substituters = [
-      "https://vicinae.cachix.org"
       "https://cache.forall.systems"
     ];
     extra-trusted-public-keys = [
-      "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
       "cache.forall.systems:5PmD7QO4MSF8YgyRZtkSGXRDo96H3bybIf2SsQh8ScI="
     ];
   };
@@ -49,7 +38,6 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
-      vicinae,
       nixvim,
       ...
     }@inputs:
@@ -76,11 +64,9 @@
               inherit
                 inputs
                 pkgs-unstable
-                vicinae
                 ;
             };
             home-manager.sharedModules = [
-              vicinae.homeManagerModules.default
               nixvim.homeModules.nixvim
             ];
 

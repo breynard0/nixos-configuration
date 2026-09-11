@@ -42,6 +42,12 @@
     # Set up Postgres for development
     ./config/postgres.nix
 
+    # Intel NPU / OpenVINO
+    ./config/npu.nix
+
+    # Printing and scanning
+    ./config/printing.nix
+
     # iPhone integration
     ./config/tether.nix
   ];
@@ -108,10 +114,7 @@
     zlib
   ];
 
-  # Needed for Bitwarden desktop
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-39.8.10"
-    "electron-40.10.5"
     "ventoy-1.1.12"
   ];
 
@@ -138,14 +141,15 @@
   users.users.breynard = {
     isNormalUser = true;
     description = "breynard";
+    shell = pkgs.fish;
     extraGroups = [
       "networkmanager"
       "wheel"
       "docker"
       "dialout"
-      "plugdev"
       "kvm"
-      "libvirt"
+      "libvirtd"
+      "wireshark"
       "input"
     ];
   };
@@ -186,33 +190,29 @@
     alacritty
     bash
 
-    hplip
     ydotool
 
     restic
 
-    ventoy
 
-    protonvpn-gui
+    proton-vpn
 
     config.boot.kernelPackages.usbip
 
-    mfcl8690cdwlpr
-    mfcl8690cdwcupswrapper
   ];
 
   # Docker!
   virtualisation.docker.enable = true;
 
+  programs.fish.enable = true;
+
   programs.ydotool.enable = true;
 
-  # Enable printing
-  services.printing.enable = true;
-  services.avahi = {
+  programs.wireshark = {
     enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
+    package = pkgs.wireshark;
   };
+
 
   # Enable Tor
   # services.tor = {
@@ -234,10 +234,6 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -245,7 +241,11 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "26.05"; # Did you read the comment?
 
-  environment.variables.EDITOR = "vim";
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    SUDO_EDITOR = "nvim";
+  };
 }

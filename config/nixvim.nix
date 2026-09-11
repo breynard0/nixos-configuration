@@ -391,6 +391,7 @@
             "<C-S-i>       Format buffer",
             "<leader>ai    Toggle AI suggestions (Supermaven)",
             "<leader>gg    Open Neogit",
+            "<leader>gs    Git status (hover to diff, <Tab> to stage)",
             "",
             "-- Completion (insert mode) --",
             "<C-Space>     Open completion menu",
@@ -658,6 +659,10 @@
       {
         key = "<leader>gg";
         action = "<cmd>Neogit<cr>";
+      }
+      {
+        key = "<leader>gs";
+        action = "<cmd>Telescope git_status<cr>";
       }
       {
         key = "<leader>ai";

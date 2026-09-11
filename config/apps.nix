@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs; [
     # System app suite
-    firefox
     chromium # Required by the JetBrains markdown plugin preview
     inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
     tor-browser
@@ -38,12 +37,10 @@
     kdePackages.filelight
     simulide
     gnome-network-displays
-    mullvad-vpn
     popsicle
     wxformbuilder
     inkscape
     ckan
-    wireshark
     quickemu
     obs-studio
     davinci-resolve

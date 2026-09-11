@@ -5,19 +5,20 @@
 
 {
   imports = [
-    ./config/vicinae.nix
     ./config/screen_display.nix
     ./config/vscode.nix
-    ./config/gtk.nix
+    ./config/theme.nix
     ./config/terminal.nix
     ./config/apps.nix
     ./config/defaults.nix
+    ./config/firefox.nix
     ./config/jetbrains.nix
     ./config/zed.nix
     ./config/helix.nix
     ./config/nixvim.nix
     ./config/dconf.nix
     ./config/pi.nix
+    ./config/qz-tray.nix
   ];
 
   home.username = "breynard";
@@ -64,7 +65,6 @@
     gnutar
     gawk
     zstd
-    gnupg
     dconf
 
     # nix related
@@ -99,7 +99,6 @@
     pavucontrol
     paprefs
 
-    ashell
 
     # Fonts
     nerd-fonts.jetbrains-mono

@@ -1,44 +1,23 @@
 { pkgs, lib, ... }:
-{
-  home.packages = [
-
-    # This custom syntax adds the ability to launch these editors detached from the terminal
-    (pkgs.writeShellScriptBin "webstorm" ''
-      ${pkgs.jetbrains.webstorm}/bin/webstorm "$@" >/dev/null 2>&1 &
-    '')
-
-    (pkgs.writeShellScriptBin "rust-rover" ''
-      ${pkgs.jetbrains.rust-rover}/bin/rust-rover "$@" >/dev/null 2>&1 &
-    '')
-
-    (pkgs.writeShellScriptBin "rider" ''
-      ${pkgs.jetbrains.rider}/bin/rider "$@" >/dev/null 2>&1 &
-    '')
-
-    (pkgs.writeShellScriptBin "pycharm" ''
-      ${pkgs.jetbrains.pycharm}/bin/pycharm "$@" >/dev/null 2>&1 &
-    '')
-
-    (pkgs.writeShellScriptBin "idea" ''
-      ${pkgs.jetbrains.idea}/bin/idea "$@" >/dev/null 2>&1 &
-    '')
-
-    (pkgs.writeShellScriptBin "clion" ''
-      ${pkgs.jetbrains.clion}/bin/clion "$@" >/dev/null 2>&1 &
-    '')
-
-    (pkgs.writeShellScriptBin "goland" ''
-      ${pkgs.jetbrains.goland}/bin/goland "$@" >/dev/null 2>&1 &
-    '')
-
-    pkgs.jetbrains.jdk
-
-    (lib.lowPrio pkgs.jetbrains.rust-rover)
-    (lib.lowPrio pkgs.jetbrains.webstorm)
-    (lib.lowPrio pkgs.jetbrains.rider)
-    (lib.lowPrio pkgs.jetbrains.pycharm)
-    (lib.lowPrio pkgs.jetbrains.idea)
-    (lib.lowPrio pkgs.jetbrains.clion)
-    (lib.lowPrio pkgs.jetbrains.goland)
+let
+  ides = [
+    "webstorm"
+    "rust-rover"
+    "rider"
+    "pycharm"
+    "idea"
+    "clion"
+    "goland"
   ];
+
+  # Shadows the real package (hence lowPrio below) so the IDE launches detached from the terminal.
+  detached =
+    name:
+    pkgs.writeShellScriptBin name ''
+      ${lib.getExe pkgs.jetbrains.${name}} "$@" >/dev/null 2>&1 &
+    '';
+in
+{
+  home.packages =
+    map detached ides ++ map (name: lib.lowPrio pkgs.jetbrains.${name}) ides ++ [ pkgs.jetbrains.jdk ];
 }
