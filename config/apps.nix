@@ -15,6 +15,7 @@ let
     '';
   };
   emdash = pkgs.callPackage ../pkgs/emdash.nix { };
+  nimbalyst = pkgs.callPackage ../pkgs/nimbalyst.nix { };
 in
 {
   home.packages = with pkgs; [
@@ -69,6 +70,7 @@ in
     claude-code
     codex
     emdash
+    nimbalyst
     ventoy-full
     audacity
     github-desktop

@@ -18,6 +18,7 @@
     ./config/dconf.nix
     ./config/pi.nix
     ./config/qz-tray.nix
+    ./config/cursor.nix
   ];
 
   home.username = "breynard";
