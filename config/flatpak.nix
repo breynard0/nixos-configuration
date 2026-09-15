@@ -20,6 +20,12 @@
         appId = "com.kagi.Orion";
         origin = "orion-beta";
       }
+      {
+        appId = "app.openbubbles.OpenBubbles";
+      }
+      {
+        appId = "com.github.tchx84.Flatseal";
+      }
     ];
 
     # ~/.themes and ~/.icons are symlinks into the store, which the sandbox

@@ -21,6 +21,8 @@
     nixvim.url = "github:nix-community/nixvim/nixos-26.05";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+
+    taut.url = "github:jeremy46231/taut";
   };
 
   nixConfig = {

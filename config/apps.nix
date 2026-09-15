@@ -30,6 +30,8 @@ in
     gnome-boxes
 
     # Other apps
+    opencode
+    opencode-desktop
     equibop
     spotifyX11
     speedcrunch
@@ -74,5 +76,6 @@ in
     ventoy-full
     audacity
     github-desktop
+    inputs.taut.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

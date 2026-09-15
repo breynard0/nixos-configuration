@@ -63,6 +63,21 @@
         command = "echohl WarningMsg | echo 'File changed on disk, buffer reloaded' | echohl None";
       }
       {
+        event = "BufReadPost";
+        pattern = "*";
+        callback.__raw = ''
+          function()
+            local lines = vim.api.nvim_buf_get_lines(0, 0, math.min(500, vim.fn.lineCount("$")), false)
+            for _, line in ipairs(lines) do
+              if string.find(line, "\0", 1, true) then
+                pcall(vim.cmd, "HexDump")
+                return
+              end
+            end
+          end
+        '';
+      }
+      {
         event = "FileType";
         pattern = [
           "python"
@@ -169,6 +184,7 @@
       "*".config.capabilities.__raw = "require('cmp_nvim_lsp').default_capabilities()";
 
       clangd.enable = true;
+      asm_lsp.enable = true;
       rust_analyzer.enable = true;
       ts_ls.enable = true;
       svelte.enable = true;
@@ -415,6 +431,14 @@
 
     plugins.wakatime.enable = true;
 
+    plugins.hex = {
+      enable = true;
+      settings = {
+        dump_cmd = "xxd -g 1 -u";
+        assemble_cmd = "xxd -r";
+      };
+    };
+
     userCommands.Cheatsheet = {
       desc = "Show a cheatsheet of configured keybinds";
       command.__raw = ''
@@ -436,6 +460,7 @@
             "<leader>ai    Toggle AI suggestions (Supermaven)",
             "<leader>gg    Open Neogit",
             "<leader>gs    Git status (hover to diff, <Tab> to stage)",
+            "<leader>hx    Toggle hex view (hex.nvim)",
             "",
             "-- Completion (insert mode) --",
             "<C-Space>     Open completion menu",

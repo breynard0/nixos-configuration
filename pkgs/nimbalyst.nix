@@ -2,6 +2,7 @@
   lib,
   appimageTools,
   fetchurl,
+  makeWrapper,
 }:
 
 let
@@ -19,6 +20,8 @@ in
 appimageTools.wrapType2 {
   inherit pname version src;
 
+  nativeBuildInputs = [ makeWrapper ];
+
   extraInstallCommands = ''
     install -Dm644 ${appimageContents}/${pname}.desktop -t $out/share/applications
     cp -r ${appimageContents}/usr/share/icons $out/share/icons
@@ -27,6 +30,19 @@ appimageTools.wrapType2 {
     # chrome-sandbox cannot be setuid in the store.
     substituteInPlace $out/share/applications/${pname}.desktop \
       --replace-fail 'Exec=AppRun' 'Exec=${pname}'
+
+    # Keep all mutable application state out of the Nix store and in directories
+    # owned by the user that launches Nimbalyst.  This also avoids inheriting a
+    # system-level XDG directory when the desktop launcher starts the AppImage.
+    wrapProgram $out/bin/${pname} \
+      --run '
+        export XDG_CONFIG_HOME="$HOME/.config/${pname}"
+        export XDG_DATA_HOME="$HOME/.local/share/${pname}"
+        export XDG_CACHE_HOME="$HOME/.cache/${pname}"
+        export XDG_STATE_HOME="$HOME/.local/state/${pname}"
+        export TMPDIR="$XDG_CACHE_HOME/tmp"
+        mkdir -p -m 700 "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME" "$XDG_STATE_HOME" "$TMPDIR"
+      '
   '';
 
   meta = {
