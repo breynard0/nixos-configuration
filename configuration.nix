@@ -63,9 +63,6 @@
     # Printing and scanning
     ./config/printing.nix
 
-    # iPhone integration
-    ./config/tether.nix
-
     # Bootloader, boot speed, swap
     ./config/boot.nix
 

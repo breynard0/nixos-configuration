@@ -67,7 +67,7 @@
         pattern = "*";
         callback.__raw = ''
           function()
-            local lines = vim.api.nvim_buf_get_lines(0, 0, math.min(500, vim.fn.lineCount("$")), false)
+            local lines = vim.api.nvim_buf_get_lines(0, 0, math.min(500, vim.fn.line("$")), false)
             for _, line in ipairs(lines) do
               if string.find(line, "\0", 1, true) then
                 pcall(vim.cmd, "HexDump")
@@ -529,6 +529,20 @@
     };
 
     extraConfigLua = ''
+      -- Suppress clang's -Wint-to-void-pointer-cast diagnostic (host pointer
+      -- width is 64-bit; real-mode near pointers are always smaller).
+      do
+        local orig = vim.lsp.handlers["textDocument/publishDiagnostics"]
+        vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+          if result and result.diagnostics then
+            result.diagnostics = vim.tbl_filter(function(d)
+              return not (d.source == "clang" and d.code == "-Wint-to-void-pointer-cast")
+            end, result.diagnostics)
+          end
+          return orig(err, result, ctx, config)
+        end
+      end
+
       -- Diagnostics sit to the right of the code and wrap onto extra virtual
       -- lines rather than running off the window edge. Built-in virtual_text
       -- never wraps and virtual_lines always starts below the code line.
