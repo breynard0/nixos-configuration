@@ -10,6 +10,7 @@
     ./config/theme.nix
     ./config/terminal.nix
     ./config/apps.nix
+    ./config/codex.nix
     ./config/defaults.nix
     ./config/jetbrains.nix
     ./config/zed.nix

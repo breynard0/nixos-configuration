@@ -36,7 +36,6 @@ in
     spotifyX11
     speedcrunch
     blender
-    slack
     gtkwave
     godot
     musescore
@@ -70,7 +69,6 @@ in
     dbeaver-bin
     beekeeper-studio
     claude-code
-    codex
     emdash
     nimbalyst
     ventoy-full
