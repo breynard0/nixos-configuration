@@ -91,6 +91,7 @@ in
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
         ];
       };
@@ -108,6 +109,11 @@ in
         name = "spotify";
         command = "spotify";
         binding = "<Super>m";
+      };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+        name = "taut";
+        command = "taut";
+        binding = "<Super>s";
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4" = {
         name = "equibop";
