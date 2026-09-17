@@ -22,6 +22,24 @@ appimageTools.wrapType2 {
 
   nativeBuildInputs = [ makeWrapper ];
 
+  # The tutorial seeds a workspace with fs.cp, which preserves source modes, so
+  # the template copied out of the read-only store arrives at 555/444 and the
+  # app can neither write its marker file into it nor clean the attempt up.
+  # Hand it a writable copy instead.
+  extraPreBwrapCmds = ''
+    tutorialTemplate="''${XDG_CACHE_HOME:-$HOME/.cache/${pname}}/tutorial-project-${version}"
+    if [[ ! -d $tutorialTemplate ]]; then
+      mkdir -p "$(dirname "$tutorialTemplate")"
+      rm -rf "$tutorialTemplate.tmp"
+      cp -rT --no-preserve=mode ${appimageContents}/resources/tutorial-project "$tutorialTemplate.tmp"
+      mv -T "$tutorialTemplate.tmp" "$tutorialTemplate"
+    fi
+  '';
+
+  extraBwrapArgs = [
+    ''--bind "$tutorialTemplate" ${appimageContents}/resources/tutorial-project''
+  ];
+
   extraInstallCommands = ''
     install -Dm644 ${appimageContents}/${pname}.desktop -t $out/share/applications
     cp -r ${appimageContents}/usr/share/icons $out/share/icons

@@ -729,6 +729,18 @@
 
     keymaps = [
       {
+        key = "<CapsLock>";
+        action = "<Esc>";
+        mode = [
+          "n"
+          "i"
+          "v"
+          "x"
+          "s"
+          "o"
+        ];
+      }
+      {
         key = "<C-f>";
         action = "<cmd>Telescope find_files<cr>";
       }
