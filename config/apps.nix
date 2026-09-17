@@ -70,6 +70,7 @@ in
     beekeeper-studio
     claude-code
     emdash
+    gemini-cli
     nimbalyst
     ventoy-full
     audacity
