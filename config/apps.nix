@@ -16,6 +16,8 @@ let
   };
   emdash = pkgs.callPackage ../pkgs/emdash.nix { };
   nimbalyst = pkgs.callPackage ../pkgs/nimbalyst.nix { };
+  antigravity-cli = pkgs.callPackage ../pkgs/antigravity-cli.nix { };
+  got-your-back = pkgs.callPackage ../pkgs/got-your-back.nix { };
 in
 {
   home.packages = with pkgs; [
@@ -70,7 +72,8 @@ in
     beekeeper-studio
     claude-code
     emdash
-    gemini-cli
+    antigravity-cli
+    got-your-back
     nimbalyst
     ventoy-full
     audacity

@@ -1,20 +1,8 @@
 { pkgs, ... }:
-let
-  # uid 1000; the session bus is where notify-send has to land.
-  notify = pkgs.writeShellScript "backup-failed-notify" ''
-    ${pkgs.sudo}/bin/sudo -u breynard \
-      DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus \
-      ${pkgs.libnotify}/bin/notify-send --urgency=critical \
-      "Backup failed" \
-      "restic did not complete. Check: journalctl -u backup.service"
-  '';
-in
 {
   systemd.services.backup = {
     script = builtins.readFile ./restic-backup.sh;
     path = [ pkgs.restic ];
-    onFailure = [ "backup-failed.service" ];
-
     serviceConfig = {
       Type = "oneshot";
 
@@ -26,14 +14,6 @@ in
       # Yield to interactive work rather than competing with it.
       IOSchedulingClass = "idle";
       Nice = 19;
-    };
-  };
-
-  systemd.services.backup-failed = {
-    description = "Notify that the restic backup failed";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = notify;
     };
   };
 

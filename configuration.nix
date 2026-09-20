@@ -51,6 +51,9 @@
     # Firewall
     ./config/firewall.nix
 
+    # Opt-in local Tor proxy
+    ./config/tor.nix
+
     # GC, zram, SMART monitoring
     ./config/maintenance.nix
 
@@ -208,23 +211,6 @@
     enable = true;
     package = pkgs.wireshark;
   };
-
-  # Enable Tor
-  # services.tor = {
-  #   enable = true;
-  #   openFirewall = true;
-  #   relay = {
-  #     enable = true;
-  #     role = "relay";
-  #   };
-  #   settings = {
-  #     ContactInfo = "dev@breynard.net";
-  #     Nickname = "breynard";
-  #     ORPort = 9001;
-  #     ControlPort = 9051;
-  #     BandWidthRate = "1 MBytes";
-  #   };
-  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
