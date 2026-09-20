@@ -116,6 +116,7 @@
 
   nixpkgs.config.permittedInsecurePackages = [
     "ventoy-1.1.12"
+    "electron-41.9.1"
   ];
 
   # Select internationalisation properties.
