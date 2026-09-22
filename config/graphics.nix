@@ -11,6 +11,12 @@
       vpl-gpu-rt
 
       intel-compute-runtime
+
+      lsfg-vk
+    ];
+
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      lsfg-vk
     ];
   };
 

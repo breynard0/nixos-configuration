@@ -34,6 +34,7 @@ in
     # Other apps
     opencode
     opencode-desktop
+    lsfg-vk-ui
     equibop
     spotifyX11
     speedcrunch
