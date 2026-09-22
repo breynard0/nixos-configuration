@@ -71,7 +71,6 @@ in
     imhex
     dbeaver-bin
     beekeeper-studio
-    claude-code
     emdash
     antigravity-cli
     got-your-back

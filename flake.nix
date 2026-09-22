@@ -23,6 +23,8 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     taut.url = "github:jeremy46231/taut";
+
+    claude-code.url = "github:sadjow/claude-code-nix";
   };
 
   nixConfig = {
@@ -41,6 +43,7 @@
       nixpkgs-unstable,
       home-manager,
       nixvim,
+      claude-code,
       ...
     }@inputs:
     let
@@ -60,6 +63,8 @@
 
           home-manager.nixosModules.home-manager
           {
+            nixpkgs.overlays = [ claude-code.overlays.default ];
+
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
