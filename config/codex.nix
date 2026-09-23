@@ -1,5 +1,5 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
-  home.packages = [ pkgs.codex ];
+  home.packages = [ inputs.codex.packages.${pkgs.stdenv.hostPlatform.system}.default ];
 }
