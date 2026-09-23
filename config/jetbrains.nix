@@ -3,7 +3,6 @@ let
   ides = [
     "webstorm"
     "rust-rover"
-    "rider"
     "pycharm"
     "idea"
     "clion"
