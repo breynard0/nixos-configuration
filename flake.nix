@@ -25,8 +25,6 @@
     taut.url = "github:jeremy46231/taut";
 
     claude-code.url = "github:sadjow/claude-code-nix";
-
-    codex.url = "github:openai/codex";
   };
 
   nixConfig = {
