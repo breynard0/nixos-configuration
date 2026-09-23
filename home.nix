@@ -118,6 +118,7 @@
 
   home.shellAliases = {
     nd = "nix develop --command fish";
+    snrs = "sudo nixos-rebuild switch";
   };
 
   programs.fish.functions = {
