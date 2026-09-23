@@ -35,6 +35,7 @@ in
     opencode
     opencode-desktop
     lsfg-vk-ui
+    ffmpeg
     equibop
     spotifyX11
     speedcrunch
