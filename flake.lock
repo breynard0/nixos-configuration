@@ -242,6 +242,23 @@
         "type": "github"
       }
     },
+    "myreview": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790623328,
+        "narHash": "sha256-c9zoL2Z9K/GE+7HLMqKc6UdTD1jVrm5Bqla6DDXi+nw=",
+        "path": "/home/breynard/Agentic/MyReview",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/breynard/Agentic/MyReview",
+        "type": "path"
+      }
+    },
     "nix-flatpak": {
       "locked": {
         "lastModified": 1790428548,
@@ -476,6 +493,7 @@
         "claude-code": "claude-code",
         "helium": "helium",
         "home-manager": "home-manager",
+        "myreview": "myreview",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-old": "nixpkgs-old",

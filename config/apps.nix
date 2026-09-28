@@ -25,6 +25,7 @@ in
     # System app suite
     chromium # Required by the JetBrains markdown plugin preview
     inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.myreview.packages.${pkgs.stdenv.hostPlatform.system}.default
     tor-browser
     lite-xl
     evince

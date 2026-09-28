@@ -25,6 +25,11 @@
     taut.url = "github:jeremy46231/taut";
 
     claude-code.url = "github:sadjow/claude-code-nix";
+
+    myreview = {
+      url = "path:/home/breynard/Agentic/MyReview";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
