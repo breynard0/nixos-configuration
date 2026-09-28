@@ -18,6 +18,7 @@ let
   nimbalyst = pkgs.callPackage ../pkgs/nimbalyst.nix { };
   antigravity-cli = pkgs.callPackage ../pkgs/antigravity-cli.nix { };
   got-your-back = pkgs.callPackage ../pkgs/got-your-back.nix { };
+  sheepit-client = pkgs.callPackage ../pkgs/sheepit-client.nix { };
 in
 {
   home.packages = with pkgs; [
@@ -40,6 +41,7 @@ in
     spotifyX11
     speedcrunch
     blender
+    sheepit-client
     gtkwave
     godot
     musescore
