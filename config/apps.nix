@@ -69,7 +69,6 @@ in
     obsidian
     stm32cubemx
     krita
-    affinity-v3
     prismlauncher
     linux-wifi-hotspot
     ltspice

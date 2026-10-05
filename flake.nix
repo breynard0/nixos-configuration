@@ -16,8 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    affinity-nix.url = "github:mrshmllow/affinity-nix";
-
     nixvim.url = "github:nix-community/nixvim/nixos-26.05";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
@@ -35,15 +33,6 @@
       url = "path:/home/breynard/Agentic/MyReview";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
-
-  nixConfig = {
-    extra-substituters = [
-      "https://cache.forall.systems"
-    ];
-    extra-trusted-public-keys = [
-      "cache.forall.systems:5PmD7QO4MSF8YgyRZtkSGXRDo96H3bybIf2SsQh8ScI="
-    ];
   };
 
   outputs =
