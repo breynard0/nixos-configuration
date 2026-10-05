@@ -28,6 +28,7 @@ restic backup \
   --exclude /home/breynard/Shows \
   --exclude /home/breynard/git-cache \
   --exclude /home/breynard/s3.ca-east-006.backblazeb2.com \
+  --exclude /PyDir/ssdt_testing \
   --exclude '**/.venv' \
   --exclude '**/target' \
   /home/breynard/

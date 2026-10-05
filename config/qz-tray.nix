@@ -18,6 +18,7 @@ in
       ExecStart = "${qz-tray}/bin/qz-tray";
       Restart = "on-failure";
       RestartSec = 5;
+      TimeoutStopSec = 5;
     };
 
     Install.WantedBy = [ "graphical-session.target" ];

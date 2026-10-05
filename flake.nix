@@ -24,6 +24,11 @@
 
     taut.url = "github:jeremy46231/taut";
 
+    paseo = {
+      url = "github:getpaseo/paseo";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     claude-code.url = "github:sadjow/claude-code-nix";
 
     myreview = {

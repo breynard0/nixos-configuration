@@ -19,6 +19,19 @@ let
   antigravity-cli = pkgs.callPackage ../pkgs/antigravity-cli.nix { };
   got-your-back = pkgs.callPackage ../pkgs/got-your-back.nix { };
   sheepit-client = pkgs.callPackage ../pkgs/sheepit-client.nix { };
+  paseoDesktop = inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system}.desktop.overrideAttrs (old: {
+    # The desktop resolves @getpaseo/server's package export at startup, but
+    # Paseo's runtime tracer does not see this dynamic resolution.
+    postPatch = (old.postPatch or "") + ''
+      substituteInPlace scripts/trace-daemon.mjs \
+        --replace-fail '  "packages/cli/dist/index.js",' \
+          '  "packages/server/dist/server/server/exports.js",
+  "packages/cli/dist/index.js",'
+    '';
+    postInstall = (old.postInstall or "") + ''
+      test -f "$out/share/paseo-desktop/node_modules/@getpaseo/server/dist/server/server/exports.js"
+    '';
+  });
 in
 {
   home.packages = with pkgs; [
@@ -68,7 +81,6 @@ in
     inkscape
     ckan
     quickemu
-    obs-studio
     davinci-resolve
     wineWow64Packages.full
     ghidra
@@ -82,6 +94,13 @@ in
     ventoy-full
     audacity
     github-desktop
+    figma-linux
     inputs.taut.packages.${pkgs.stdenv.hostPlatform.system}.default
+    paseoDesktop
+
+    # TODO: Delete these three packages when they are no longer needed.
+    gnumake
+    qemu
+    nasm
   ];
 }

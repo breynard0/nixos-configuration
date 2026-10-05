@@ -123,6 +123,11 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+  };
+
   # Bluetooth stuff
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
