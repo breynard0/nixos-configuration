@@ -63,6 +63,8 @@ in
       "org/gnome/mutter/keybindings" = {
         switch-monitor = [ "XF86Display" ];
       };
+      # Let Forge place large new windows instead of Mutter maximizing them.
+      "org/gnome/mutter".auto-maximize = false;
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super><Shift>q" ];
         move-to-workspace-1 = [ "<Super><Shift>1" ];
