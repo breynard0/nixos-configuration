@@ -3,9 +3,10 @@
   programs.cursor = {
     enable = true;
     profiles = {
-      main = {
+      default = {
         enableExtensionUpdateCheck = true;
       };
+      main = { };
     };
   };
 }
