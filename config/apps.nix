@@ -44,6 +44,8 @@ in
     evince
     pdfarranger
     dconf-editor
+    dbus.lib
+    zenity
     gnome-boxes
 
     # Other apps
