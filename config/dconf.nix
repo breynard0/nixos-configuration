@@ -101,8 +101,8 @@ in
         binding = "<Super>Return";
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-        name = "firefox";
-        command = "firefox";
+        name = "helium";
+        command = "helium";
         binding = "<Super>f";
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
