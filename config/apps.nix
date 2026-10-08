@@ -20,6 +20,7 @@ let
   got-your-back = pkgs.callPackage ../pkgs/got-your-back.nix { };
   sheepit-client = pkgs.callPackage ../pkgs/sheepit-client.nix { };
   helium = pkgs.callPackage ../pkgs/helium.nix { };
+  ytubic = pkgs.callPackage ../pkgs/ytubic.nix { };
   paseoDesktop = inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system}.desktop.overrideAttrs (old: {
     # The desktop resolves @getpaseo/server's package export at startup, but
     # Paseo's runtime tracer does not see this dynamic resolution.
@@ -39,6 +40,7 @@ in
     # System app suite
     chromium # Required by the JetBrains markdown plugin preview
     helium
+    ytubic
     inputs.myreview.packages.${pkgs.stdenv.hostPlatform.system}.default
     tor-browser
     lite-xl
