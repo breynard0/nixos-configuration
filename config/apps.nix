@@ -19,6 +19,7 @@ let
   antigravity-cli = pkgs.callPackage ../pkgs/antigravity-cli.nix { };
   got-your-back = pkgs.callPackage ../pkgs/got-your-back.nix { };
   sheepit-client = pkgs.callPackage ../pkgs/sheepit-client.nix { };
+  helium = pkgs.callPackage ../pkgs/helium.nix { };
   paseoDesktop = inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system}.desktop.overrideAttrs (old: {
     # The desktop resolves @getpaseo/server's package export at startup, but
     # Paseo's runtime tracer does not see this dynamic resolution.
@@ -37,7 +38,7 @@ in
   home.packages = with pkgs; [
     # System app suite
     chromium # Required by the JetBrains markdown plugin preview
-    inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
+    helium
     inputs.myreview.packages.${pkgs.stdenv.hostPlatform.system}.default
     tor-browser
     lite-xl
@@ -98,6 +99,7 @@ in
     figma-linux
     inputs.taut.packages.${pkgs.stdenv.hostPlatform.system}.default
     paseoDesktop
+    whisper-ctranslate2
 
     # TODO: Delete these three packages when they are no longer needed.
     gnumake

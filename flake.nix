@@ -11,11 +11,6 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-old.url = "github:nixos/nixpkgs?ref=nixos-25.11";
 
-    helium = {
-      url = "github:AlvaroParker/helium-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixvim.url = "github:nix-community/nixvim/nixos-26.05";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
