@@ -12,7 +12,7 @@
   boot.loader.timeout = 2;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "vhci-hcd" ];
+  boot.kernelModules = [ "vhci-hcd" "ntsync" ];
 
   boot.initrd.systemd.enable = true;
   boot.plymouth.enable = true;

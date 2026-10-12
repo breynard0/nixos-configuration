@@ -20,6 +20,7 @@
 
     # Set up GDM and GNOME
     ./config/gnome.nix
+    ./config/xfce.nix
 
     # Configure pipewire
     ./config/pipewire.nix

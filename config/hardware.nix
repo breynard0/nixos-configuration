@@ -23,6 +23,10 @@
     pkgs.openocd
   ];
 
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTR{idVendor}=="2207", ATTR{idProduct}=="0019", MODE="0666"
+  '';
+
   users.users.breynard.extraGroups = [ "i2c" ];
 
   environment.systemPackages = [

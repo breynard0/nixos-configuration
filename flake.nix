@@ -24,6 +24,8 @@
 
     claude-code.url = "github:sadjow/claude-code-nix";
 
+    ableton-linux.url = "github:shibco/ableton-linux";
+
     myreview = {
       url = "path:/home/breynard/Agentic/MyReview";
       inputs.nixpkgs.follows = "nixpkgs";
