@@ -14,22 +14,6 @@ let
         --add-flags "--ozone-platform=x11"
     '';
   };
-  abletonLive =
-    let
-      ableton = inputs.ableton-linux.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    in
-    pkgs.symlinkJoin {
-      name = "ableton-live-fractional";
-      paths = [ ableton ];
-      nativeBuildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/ableton-live --set-default ABLETON_DPI_MODE fractional
-        for f in $out/share/applications/*.desktop; do
-          cp --remove-destination "$(readlink -f "$f")" "$f"
-          substituteInPlace "$f" --replace-quiet "${ableton}/bin/ableton-live" "$out/bin/ableton-live"
-        done
-      '';
-    };
   emdash = pkgs.callPackage ../pkgs/emdash.nix { };
   nimbalyst = pkgs.callPackage ../pkgs/nimbalyst.nix { };
   antigravity-cli = pkgs.callPackage ../pkgs/antigravity-cli.nix { };
@@ -117,7 +101,7 @@ in
     figma-linux
     inputs.taut.packages.${pkgs.stdenv.hostPlatform.system}.default
     paseoDesktop
-    (pkgs.lib.lowPrio abletonLive)
+    (pkgs.lib.lowPrio inputs.ableton-linux.packages.${pkgs.stdenv.hostPlatform.system}.default)
     whisper-ctranslate2
 
     android-tools
