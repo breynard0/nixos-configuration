@@ -101,6 +101,7 @@ in
     figma-linux
     inputs.taut.packages.${pkgs.stdenv.hostPlatform.system}.default
     paseoDesktop
+    inputs.claude-desktop.packages.${pkgs.stdenv.hostPlatform.system}.default
     (pkgs.lib.lowPrio inputs.ableton-linux.packages.${pkgs.stdenv.hostPlatform.system}.default)
     whisper-ctranslate2
 

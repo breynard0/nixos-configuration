@@ -64,7 +64,10 @@ in
         switch-monitor = [ "XF86Display" ];
       };
       # Let Forge place large new windows instead of Mutter maximizing them.
-      "org/gnome/mutter".auto-maximize = false;
+      "org/gnome/mutter" = {
+        auto-maximize = false;
+        experimental-features = [ "xwayland-native-scaling" ];
+      };
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super><Shift>q" ];
         move-to-workspace-1 = [ "<Super><Shift>1" ];

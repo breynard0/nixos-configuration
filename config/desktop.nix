@@ -6,7 +6,10 @@
 {
   # Electron/Chromium apps render blurry under XWayland on the 3840x2160 panel
   # at 1.25 fractional scale; this makes them native Wayland clients.
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    CLAUDE_USE_WAYLAND = "1";
+  };
 
   services.fwupd.enable = true;
 

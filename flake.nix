@@ -26,6 +26,8 @@
 
     ableton-linux.url = "github:shibco/ableton-linux";
 
+    claude-desktop.url = "github:aaddrick/claude-desktop-debian";
+
     myreview = {
       url = "path:/home/breynard/Agentic/MyReview";
       inputs.nixpkgs.follows = "nixpkgs";
