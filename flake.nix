@@ -28,6 +28,11 @@
 
     claude-desktop.url = "github:aaddrick/claude-desktop-debian";
 
+    gappie-dashboard = {
+      url = "git+ssh://git@github.com/breynard0/gappie-dashboard";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     myreview = {
       url = "path:/home/breynard/Agentic/MyReview";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,6 +63,7 @@
         modules = [
           ./configuration.nix
           inputs.nix-flatpak.nixosModules.nix-flatpak
+          inputs.gappie-dashboard.nixosModules.default
 
           home-manager.nixosModules.home-manager
           {

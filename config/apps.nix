@@ -66,6 +66,7 @@ in
     musescore
     muse-sounds-manager
     thunderbird
+    fastmail-desktop
     libreoffice
     onlyoffice-desktopeditors
     kicad

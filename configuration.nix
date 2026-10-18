@@ -52,6 +52,9 @@
     # Firewall
     ./config/firewall.nix
 
+    # Gap year stats dashboard
+    ./config/gappie-dashboard.nix
+
     # Opt-in local Tor proxy
     ./config/tor.nix
 

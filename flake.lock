@@ -95,6 +95,26 @@
         "type": "github"
       }
     },
+    "gappie-dashboard": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792097090,
+        "narHash": "sha256-X0RmcbkY7xUHJO8MlUjUB9P++JG8DiAmUDSyXnQ4KFk=",
+        "ref": "refs/heads/main",
+        "rev": "36d6bfa82fed7a98123ad7eac50e879e8a65b1ff",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/breynard0/gappie-dashboard"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/breynard0/gappie-dashboard"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -337,6 +357,7 @@
         "ableton-linux": "ableton-linux",
         "claude-code": "claude-code",
         "claude-desktop": "claude-desktop",
+        "gappie-dashboard": "gappie-dashboard",
         "home-manager": "home-manager",
         "myreview": "myreview",
         "nix-flatpak": "nix-flatpak",
