@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, pkgs-unstable, inputs, ... }:
 let
   # Spotify's Chromium paints its own Wayland decorations and they come out a
   # plain blue. The nixpkgs launcher unsets DISPLAY whenever NIXOS_OZONE_WL=1,
@@ -66,7 +66,7 @@ in
     musescore
     muse-sounds-manager
     thunderbird
-    fastmail-desktop
+    pkgs-unstable.fastmail-desktop
     libreoffice
     onlyoffice-desktopeditors
     kicad
