@@ -8,6 +8,7 @@
     { domain = "@audio"; type = "-"; item = "nice"; value = "-19"; }
   ];
   users.users.breynard.extraGroups = [ "audio" ];
+  environment.sessionVariables.ABLETON_DPI_MODE = "fractional";
   services.pipewire = {
     enable = true;
     alsa.enable = true;
