@@ -11,6 +11,7 @@
       "github.copilot.enable.*" = false;
       "git.confirmSync" = false;
       "explorer.confirmDragAndDrop" = false;
+      "workbench.colorTheme" = "JetBrains Islands Dark GoLand Tuned";
     };
     profiles.default.extensions = with pkgs.vscode-extensions; [
       bbenoist.nix
