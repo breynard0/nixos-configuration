@@ -66,6 +66,7 @@ in
     musescore
     muse-sounds-manager
     thunderbird
+    zoom-us
     pkgs-unstable.fastmail-desktop
     libreoffice
     onlyoffice-desktopeditors
