@@ -11,6 +11,7 @@
       vpl-gpu-rt
 
       intel-compute-runtime
+      level-zero
 
       lsfg-vk
     ];

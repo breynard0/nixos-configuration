@@ -15,6 +15,7 @@ restic backup \
   --exclude /home/breynard/.config/JetBrains \
   --exclude /home/breynard/JetbrainsApps \
   --exclude /home/breynard/.ollama \
+  --exclude /home/breynard/.local/share/comfyui \
   --exclude /home/breynard/macvm \
   --exclude /home/breynard/.paradoxlauncher \
   --exclude /home/breynard/.stm32cubemx \

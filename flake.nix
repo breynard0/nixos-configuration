@@ -24,6 +24,8 @@
 
     claude-code.url = "github:sadjow/claude-code-nix";
 
+    comfyui-nix.url = "github:utensils/comfyui-nix";
+
     ableton-linux.url = "github:shibco/ableton-linux";
 
     claude-desktop.url = "github:aaddrick/claude-desktop-debian";

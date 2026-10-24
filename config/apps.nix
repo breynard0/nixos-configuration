@@ -14,6 +14,15 @@ let
         --add-flags "--ozone-platform=x11"
     '';
   };
+  comfyui = pkgs.symlinkJoin {
+    name = "comfyui-xpu";
+    paths = [ inputs.comfyui-nix.packages.${pkgs.stdenv.hostPlatform.system}.xpu ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/comfy-ui \
+        --run 'export COMFY_USER_DIR="''${COMFY_USER_DIR:-$HOME/.local/share/comfyui}"'
+    '';
+  };
   emdash = pkgs.callPackage ../pkgs/emdash.nix { };
   nimbalyst = pkgs.callPackage ../pkgs/nimbalyst.nix { };
   antigravity-cli = pkgs.callPackage ../pkgs/antigravity-cli.nix { };
@@ -94,6 +103,7 @@ in
     dbeaver-bin
     beekeeper-studio
     emdash
+    comfyui
     antigravity-cli
     got-your-back
     nimbalyst
