@@ -25,6 +25,7 @@
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTR{idVendor}=="2207", ATTR{idProduct}=="0019", MODE="0666"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0451", ATTR{idProduct}=="e001|e003|e004|e008|e012", TAG+="uaccess"
   '';
 
   users.users.breynard.extraGroups = [ "i2c" ];

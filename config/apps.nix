@@ -28,6 +28,7 @@ let
   antigravity-cli = pkgs.callPackage ../pkgs/antigravity-cli.nix { };
   got-your-back = pkgs.callPackage ../pkgs/got-your-back.nix { };
   sheepit-client = pkgs.callPackage ../pkgs/sheepit-client.nix { };
+  tilp = pkgs.callPackage ../pkgs/tilp.nix { };
   helium = pkgs.callPackage ../pkgs/helium.nix { };
   ytubic = pkgs.callPackage ../pkgs/ytubic.nix { };
   paseoDesktop = inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system}.desktop.overrideAttrs (old: {
@@ -70,6 +71,7 @@ in
     speedcrunch
     blender
     sheepit-client
+    tilp
     gtkwave
     godot
     musescore
