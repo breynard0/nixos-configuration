@@ -72,6 +72,7 @@ in
     blender
     sheepit-client
     tilp
+    cemu-ti
     gtkwave
     godot
     musescore
