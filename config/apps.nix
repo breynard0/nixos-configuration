@@ -86,6 +86,7 @@ in
     stm32cubemx
     krita
     prismlauncher
+    r2modman
     linux-wifi-hotspot
     ltspice
     kdePackages.filelight
