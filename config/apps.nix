@@ -88,6 +88,7 @@ in
     obsidian
     stm32cubemx
     krita
+    mtpaint
     prismlauncher
     r2modman
     linux-wifi-hotspot
