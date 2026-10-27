@@ -89,6 +89,7 @@ in
     stm32cubemx
     krita
     mtpaint
+    libresprite
     prismlauncher
     r2modman
     linux-wifi-hotspot
