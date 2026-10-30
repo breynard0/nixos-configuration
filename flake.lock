@@ -24,11 +24,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1793052132,
-        "narHash": "sha256-Gk2MXKG8bMenapVoLP6gyB6HJqFWBl+2YWn4qHg7PZM=",
+        "lastModified": 1793134901,
+        "narHash": "sha256-thSjW2BhZFECtNX152v67/dbR0vKYnCfFRTQq4JINCo=",
         "owner": "sadjow",
         "repo": "claude-code-nix",
-        "rev": "9f13dbabe8a0f786e3b95a2231bdeeb8d363932b",
+        "rev": "1ce054c09e8a10c4480c281178ff7e2a737aec17",
         "type": "github"
       },
       "original": {
@@ -43,11 +43,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1792981821,
-        "narHash": "sha256-oK5bx6tAH8jNb13eZw7zmqyWcyH9lrgYonissUC6OMc=",
+        "lastModified": 1793149786,
+        "narHash": "sha256-GxA2xYTJLT0pgRYXGglgdW3ylxjq6pLO7wtjsLQ9MSQ=",
         "owner": "aaddrick",
         "repo": "claude-desktop-debian",
-        "rev": "b6db2954d03cdd04dc443b109962e181a5ef3f9c",
+        "rev": "38572790a6ffe16d84a60ab69eea710d7efbf18c",
         "type": "github"
       },
       "original": {
@@ -139,11 +139,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793112485,
-        "narHash": "sha256-qM0rSGSbdY0XtUvAaM+oI2vCHQ+V1oz2bNaPwQ81NDw=",
+        "lastModified": 1793203351,
+        "narHash": "sha256-jiCE6NqWzfIGZdX5gWvrHeBmtZ/Lj4tusp77wVqaYPM=",
         "ref": "refs/heads/main",
-        "rev": "6b45a827f57d99ef90f28be15d9dcb2c43a63435",
-        "revCount": 4,
+        "rev": "6ba0d0b939a9f7de5bfe510f42f3e0d2558ef420",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/breynard0/gappie-dashboard"
       },
@@ -269,11 +269,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1792773339,
-        "narHash": "sha256-rZLrzrC6i+jnTAlvPZHogKDulY7WWDEv9hJeHieO7Zw=",
+        "lastModified": 1793110635,
+        "narHash": "sha256-dhoW6VgFWlaodSY5jrBn+CF2FLmaUvDVgM7+C7T2+NM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3ec636362e1816bc2f0888fa0fa2c69f1bc9e504",
+        "rev": "31ecbaca1bdefa45dffc409f0250bd8039ea0010",
         "type": "github"
       },
       "original": {
@@ -407,11 +407,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793108583,
-        "narHash": "sha256-erveiw+Jxv3qsb0Wev6tacwdnuvocvONsUzmd7F9z98=",
+        "lastModified": 1793203161,
+        "narHash": "sha256-62iBjAsHPm0gLPNezC5fc4OTOol9iNT67iRMcWIOJPo=",
         "owner": "getpaseo",
         "repo": "paseo",
-        "rev": "8419c212274d60792934e53145d6abdcbadc0d91",
+        "rev": "38506ed372b6cf3c89f53f4962db3406d92a1866",
         "type": "github"
       },
       "original": {
@@ -473,11 +473,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1793106875,
-        "narHash": "sha256-XSIP17sTjnjT/y8wBHfV+R3RNL4tG4V+G28FKkXGF8M=",
+        "lastModified": 1793163835,
+        "narHash": "sha256-QmeFCOLCbNUrp07gmhiCNIgh4dgy3vKGq/cBo7enuxs=",
         "owner": "jeremy46231",
         "repo": "taut",
-        "rev": "10d0b432de044a7fa5d305b8f2dcdaa5ba73d2dd",
+        "rev": "d7b4e34463dcdc9ed7c844ed0e1c76500c34bde7",
         "type": "github"
       },
       "original": {
