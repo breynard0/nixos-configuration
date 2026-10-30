@@ -69,7 +69,22 @@
 
           home-manager.nixosModules.home-manager
           {
-            nixpkgs.overlays = [ claude-code.overlays.default ];
+            nixpkgs.overlays = [
+              claude-code.overlays.default
+              # imageio's 16-bit PNG tests fail against the Pillow in nixos-26.05 (2026-10-29).
+              (final: prev: {
+                pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+                  (pyFinal: pyPrev: {
+                    imageio = pyPrev.imageio.overridePythonAttrs (old: {
+                      disabledTestPaths = (old.disabledTestPaths or [ ]) ++ [
+                        "tests/test_pillow.py::test_png_16bit"
+                        "tests/test_pillow_legacy.py::test_png"
+                      ];
+                    });
+                  })
+                ];
+              })
+            ];
 
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
