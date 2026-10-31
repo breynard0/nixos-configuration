@@ -31,6 +31,9 @@ let
   tilp = pkgs.callPackage ../pkgs/tilp.nix { };
   helium = pkgs.callPackage ../pkgs/helium.nix { };
   ytubic = pkgs.callPackage ../pkgs/ytubic.nix { };
+  obsidian = pkgs.obsidian.override {
+    inherit (inputs.nixpkgs-electron.legacyPackages.${pkgs.stdenv.hostPlatform.system}) electron;
+  };
   paseoDesktop = inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system}.desktop.overrideAttrs (old: {
     # The desktop resolves @getpaseo/server's package export at startup, but
     # Paseo's runtime tracer does not see this dynamic resolution.

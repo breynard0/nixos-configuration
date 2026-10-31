@@ -10,6 +10,8 @@
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-old.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    # Electron 43.7.11; Obsidian renders a blank window on 43.8.x.
+    nixpkgs-electron.url = "github:nixos/nixpkgs/718f670e845328e9c2cecdd832835712b2cbd065";
 
     nixvim.url = "github:nix-community/nixvim/nixos-26.05";
 

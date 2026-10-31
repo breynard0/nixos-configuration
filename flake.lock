@@ -221,6 +221,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-electron": {
+      "locked": {
+        "lastModified": 1793015021,
+        "narHash": "sha256-Ee5BWo8sh3pGt70QUdRajnaginqFmWvrtdBc4gJzhks=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "718f670e845328e9c2cecdd832835712b2cbd065",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "718f670e845328e9c2cecdd832835712b2cbd065",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1790477367,
@@ -431,6 +447,7 @@
         "myreview": "myreview",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_5",
+        "nixpkgs-electron": "nixpkgs-electron",
         "nixpkgs-old": "nixpkgs-old",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
