@@ -1,5 +1,5 @@
 {
-  config,
+  inputs,
   pkgs,
   ...
 }:
@@ -15,27 +15,8 @@
 
   programs.gamemode.enable = true;
 
-  programs.nix-index.enable = true;
-
-  systemd.user.services.nix-index = {
-    description = "Update the nix-index database";
-    serviceConfig = {
-      Type = "oneshot";
-      Nice = 19;
-      IOSchedulingClass = "idle";
-      ExecStart = "${config.programs.nix-index.package}/bin/nix-index -f ${pkgs.path}";
-    };
-  };
-
-  systemd.user.timers.nix-index = {
-    description = "Weekly nix-index database update";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnCalendar = "weekly";
-      Persistent = true;
-      RandomizedDelaySec = "1h";
-    };
-  };
+  programs.nix-index.package =
+    inputs.nix-index-database.packages.${pkgs.stdenv.hostPlatform.system}.nix-index-with-stable-db;
 
   # Defaults are already what we want: plocate, 02:15 daily, /nix/store pruned.
   services.locate.enable = true;

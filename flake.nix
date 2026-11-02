@@ -17,6 +17,11 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     taut.url = "github:jeremy46231/taut";
 
     paseo = {
@@ -67,6 +72,7 @@
         modules = [
           ./configuration.nix
           inputs.nix-flatpak.nixosModules.nix-flatpak
+          inputs.nix-index-database.nixosModules.default
           inputs.gappie-dashboard.nixosModules.default
 
           home-manager.nixosModules.home-manager
