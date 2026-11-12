@@ -94,6 +94,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   nix.settings.download-buffer-size = 4294967296; # 4 GB
+  nix.daemonCPUSchedPolicy = "idle";
 
   # Set your time zone.
   services.automatic-timezoned.enable = true;
