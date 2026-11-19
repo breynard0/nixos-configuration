@@ -143,11 +143,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793647121,
-        "narHash": "sha256-j7VST1e2Lwh7jm0kdjlUjcz+vwc8L0BMixeI1mzrYTg=",
+        "lastModified": 1795115587,
+        "narHash": "sha256-2x/phY44KcMya9hF+xfBd64rSqjHVDwTlpzRps3aICM=",
         "ref": "refs/heads/main",
-        "rev": "37b17554af75a8661114ba4f68f0bfeff0e6e8c4",
-        "revCount": 6,
+        "rev": "933c785e5c1775a741737fb139e3d04dee922013",
+        "revCount": 7,
         "type": "git",
         "url": "ssh://git@github.com/breynard0/gappie-dashboard"
       },
