@@ -9,9 +9,6 @@
     };
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-old.url = "github:nixos/nixpkgs?ref=nixos-25.11";
-    # Electron 43.7.11; Obsidian renders a blank window on 43.8.x.
-    nixpkgs-electron.url = "github:nixos/nixpkgs/718f670e845328e9c2cecdd832835712b2cbd065";
 
     nixvim.url = "github:nix-community/nixvim/nixos-26.05";
 
@@ -22,20 +19,24 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    taut.url = "github:jeremy46231/taut";
-
-    paseo = {
-      url = "github:getpaseo/paseo";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    taut = {
+      url = "github:jeremy46231/taut";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    claude-code.url = "github:sadjow/claude-code-nix";
+    claude-code = {
+      url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     comfyui-nix.url = "github:utensils/comfyui-nix";
 
     ableton-linux.url = "github:shibco/ableton-linux";
 
-    claude-desktop.url = "github:aaddrick/claude-desktop-debian";
+    claude-desktop = {
+      url = "github:aaddrick/claude-desktop-debian";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     gappie-dashboard = {
       url = "git+ssh://git@github.com/breynard0/gappie-dashboard";
@@ -52,19 +53,13 @@
     {
       self,
       nixpkgs,
-      nixpkgs-unstable,
       home-manager,
       nixvim,
-      claude-code,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
-
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      inherit (self.nixosConfigurations.breynard-laptop) pkgs;
     in
     {
       nixosConfigurations.breynard-laptop = nixpkgs.lib.nixosSystem {
@@ -77,31 +72,10 @@
 
           home-manager.nixosModules.home-manager
           {
-            nixpkgs.overlays = [
-              claude-code.overlays.default
-              # imageio's 16-bit PNG tests fail against the Pillow in nixos-26.05 (2026-10-29).
-              (final: prev: {
-                pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
-                  (pyFinal: pyPrev: {
-                    imageio = pyPrev.imageio.overridePythonAttrs (old: {
-                      disabledTestPaths = (old.disabledTestPaths or [ ]) ++ [
-                        "tests/test_pillow.py::test_png_16bit"
-                        "tests/test_pillow_legacy.py::test_png"
-                      ];
-                    });
-                  })
-                ];
-              })
-            ];
-
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit
-                inputs
-                pkgs-unstable
-                ;
-            };
+            home-manager.backupFileExtension = "hm-backup";
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.sharedModules = [
               nixvim.homeModules.nixvim
             ];
@@ -109,6 +83,33 @@
             home-manager.users.breynard = import ./home.nix;
           }
         ];
+      };
+
+      packages.${system} = import ./pkgs { inherit pkgs inputs; };
+
+      formatter.${system} = pkgs.nixfmt-tree;
+
+      templates = {
+        stm32-rust = {
+          path = ./templates/stm32-rust;
+          description = "Embedded Rust for STM32 with probe-rs";
+        };
+        rust = {
+          path = ./templates/rust;
+          description = "Rust with rustup";
+        };
+        python = {
+          path = ./templates/python;
+          description = "Python with uv";
+        };
+        bun = {
+          path = ./templates/bun;
+          description = "TypeScript with bun";
+        };
+        godot = {
+          path = ./templates/godot;
+          description = "Godot 4";
+        };
       };
     };
 }

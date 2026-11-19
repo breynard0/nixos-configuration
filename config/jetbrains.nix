@@ -1,13 +1,8 @@
 { pkgs, lib, ... }:
 let
   ides = [
-    "webstorm"
     "rust-rover"
-    "pycharm"
-    "idea"
     "clion"
-    "goland"
-    "datagrip"
   ];
 
   # Shadows the real package (hence lowPrio below) so the IDE launches detached from the terminal.

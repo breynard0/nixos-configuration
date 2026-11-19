@@ -5,7 +5,6 @@
 
 {
   imports = [
-    ./config/screen_display.nix
     ./config/vscode.nix
     ./config/theme.nix
     ./config/terminal.nix
@@ -13,11 +12,9 @@
     ./config/defaults.nix
     ./config/jetbrains.nix
     ./config/zed.nix
-    ./config/helix.nix
     ./config/nixvim.nix
     ./config/dconf.nix
     ./config/pi.nix
-    ./config/cursor.nix
     ./config/claude.nix
   ];
 
@@ -34,14 +31,22 @@
     p7zip
 
     # utils
-    starship
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
     yq-go # yaml processor https://github.com/mikefarah/yq
-    eza # A modern replacement for ‘ls’
-    fzf # A command-line fuzzy finder
+    fd
+    bat
+    btop
+    dust
+    duf
+    tealdeer
+    hyperfine
+    just
+    uv
+    tio # serial console
     wl-clipboard # wl-copy / wl-paste for the Wayland clipboard
     gcc
+    rustup
     gh # GitHub CLI
     surge-cli # CLI for the surge.sh CDN
 
@@ -94,7 +99,7 @@
     # nix dev tools
     nixd
     nixfmt
-    nh
+    nix-tree
 
     pavucontrol
     paprefs
@@ -106,8 +111,27 @@
     enable = true;
   };
 
+  programs.git.ignores = [
+    "**/.claude/settings.local.json"
+    ".direnv/"
+    "result"
+    "result-*"
+    ".DS_Store"
+  ];
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
+
   programs.git.settings = {
     init.defaultBranch = "main";
+    pull.rebase = true;
+    rebase.autoStash = true;
+    push.autoSetupRemote = true;
+    fetch.prune = true;
+    rerere.enabled = true;
+    merge.conflictStyle = "zdiff3";
     user.name = "breynard";
     user.email = "dev@breynard.net";
     credential."https://github.com".helper = "!${pkgs.gh}/bin/gh auth git-credential";
@@ -116,11 +140,22 @@
 
   home.shellAliases = {
     nd = "nix develop --command fish";
-    snrs = "sudo nixos-rebuild switch";
+    snrs = "nh os switch";
+    ns = "tv nix-search-tv";
+    z = "cd";
+    zi = "cdi";
   };
 
   programs.fish.functions = {
-    projectinit = "nix flake init -t github:the-nix-way/dev-templates#$argv[1]";
+    projectinit = ''
+      if test -d ~/nixos-configuration/templates/$argv[1]
+        nix flake init -t ~/nixos-configuration#$argv[1]
+      else
+        nix flake init -t github:the-nix-way/dev-templates#$argv[1]
+      end
+    '';
+    # A second GNOME Shell in a window, for testing extensions without logging out.
+    gnome-nested = "dbus-run-session -- gnome-shell --devkit $argv";
     lsapps = "ls /etc/profiles/per-user/$(id -n -u)/share/applications";
   };
 
@@ -130,7 +165,16 @@
     enableBashIntegration = true;
   };
 
-  programs.zoxide.enable = true;
+  programs.zoxide = {
+    enable = true;
+    options = [
+      "--cmd"
+      "cd"
+    ];
+  };
+
+  programs.television.enable = true;
+  programs.nix-search-tv.enable = true;
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

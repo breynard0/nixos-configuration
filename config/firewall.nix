@@ -23,21 +23,6 @@
 
     allowedUDPPorts = [
       53317 # LocalSend
-      20808 # Ableton Link
-    ];
-
-    allowedTCPPortRanges = [
-      {
-        from = 1714;
-        to = 1764;
-      }
-    ];
-
-    allowedUDPPortRanges = [
-      {
-        from = 1714;
-        to = 1764;
-      }
     ];
   };
 }

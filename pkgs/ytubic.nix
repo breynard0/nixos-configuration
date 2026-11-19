@@ -20,11 +20,11 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "ytubic";
-  version = "0.5.1";
+  version = "0.5.2";
 
   src = fetchurl {
     url = "https://github.com/NUber-dev/YTubic/releases/download/v${finalAttrs.version}/YTubic_${finalAttrs.version}_Linux_x86_64.deb";
-    hash = "sha256-a1AguyAFfkPFVA9DoQIRJ8VJyCY6UfU47mEci2NJxmg=";
+    hash = "sha256-hVhEUoyvC5d77Z0DtFC8ILo28V5/9r+2KLIyMeJeNjo=";
   };
 
   nativeBuildInputs = [

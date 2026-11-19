@@ -5,18 +5,17 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    
+
     extraPackages = with pkgs; [
       intel-media-driver
       vpl-gpu-rt
 
       intel-compute-runtime
+      # libze_intel_gpu lives in a separate output; without it Level Zero
+      # sees only the NPU.
+      intel-compute-runtime.drivers
       level-zero
 
-      lsfg-vk
-    ];
-
-    extraPackages32 = with pkgs.pkgsi686Linux; [
       lsfg-vk
     ];
   };

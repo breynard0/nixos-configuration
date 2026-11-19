@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-source /etc/restic-env
 
 restic backup \
   --exclude /home/breynard/.local/share/Steam/ \
@@ -32,13 +31,12 @@ restic backup \
   --exclude /home/breynard/s3.ca-east-006.backblazeb2.com \
   --exclude /PyDir/ssdt_testing \
   --exclude /home/breynard/Videos \
+  --exclude /home/breynard/vibecoded/lapse-defeater/ \
   --exclude '**/.venv' \
   --exclude '**/target' \
   /home/breynard/
 
-# Nothing pruned this repo before, so it grew without bound.
 restic forget \
   --keep-daily 14 \
   --keep-weekly 8 \
-  --keep-monthly 12 \
-  --prune
+  --keep-monthly 12

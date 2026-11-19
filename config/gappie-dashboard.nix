@@ -9,7 +9,12 @@
 
   services.nginx = {
     enable = true;
-    defaultListen = [ { addr = "127.0.0.1"; port = 80; } ];
+    defaultListen = [
+      {
+        addr = "127.0.0.1";
+        port = 80;
+      }
+    ];
     virtualHosts."dash.bd".locations."/" = {
       proxyPass = "http://127.0.0.1:8787";
       proxyWebsockets = true;

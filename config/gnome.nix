@@ -8,16 +8,20 @@
     gnomeExtensions.appindicator
     gnomeExtensions.forge
     gnomeExtensions.all-in-one-clipboard
-    gnomeExtensions.color-picker
-    gnomeExtensions.emoji-copy
     gnomeExtensions.battery-time-percentage-compact
-    gnomeExtensions.gsconnect
     gnomeExtensions.vitals
     gnomeExtensions.spotify-controls
     gnomeExtensions.user-themes
     gnomeExtensions.brightness-control-using-ddcutil
     gnomeExtensions.caffeine
-    gnomeExtensions.rounded-window-corners-reborn
+    gnomeExtensions.quick-settings-audio-devices-hider
+    gnomeExtensions.audio-switch-shortcuts
+
+    # appindicator spawns gjs for some tray menus.
+    gjs
+    eyedropper
+    qadwaitadecorations
+    qadwaitadecorations-qt6
 
     # Also expose the theme system-wide so root-run and non-home-manager apps
     # resolve it. The override must match config/theme.nix or the two halves
@@ -40,6 +44,19 @@
   # qt6ct only registers under its own key, and most Qt apps here are Qt 6.
   # Qt 5 apps still pick up WhiteSur through QT_STYLE_OVERRIDE.
   environment.variables.QT_QPA_PLATFORMTHEME = lib.mkForce "qt6ct";
+
+  environment.sessionVariables.QT_WAYLAND_DECORATION = "adwaita";
+
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    yelp
+    gnome-maps
+    gnome-contacts
+  ];
+
+  # Mutter reads this for the login screen too, so the LG gets full-range RGB
+  # there. ~/.config/monitors.xml still wins inside the session.
+  environment.etc."xdg/monitors.xml".source = ../resources/monitors.xml;
 
   services.power-profiles-daemon.enable = false;
 }

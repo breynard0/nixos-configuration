@@ -9,6 +9,7 @@
       mfcl8690cdwlpr
       mfcl8690cdwcupswrapper
     ];
+    browsed.enable = false;
   };
 
   services.avahi = {
@@ -22,10 +23,7 @@
     extraBackends = [ pkgs.hplip ];
   };
 
-  users.users.breynard.extraGroups = [
-    "scanner"
-    "lp"
-  ];
+  users.users.breynard.extraGroups = [ "scanner" ];
 
   environment.systemPackages = [ pkgs.simple-scan ];
 }

@@ -4,9 +4,7 @@
 
 {
   pkgs,
-  options,
   config,
-  inputs,
   ...
 }:
 
@@ -20,7 +18,6 @@
 
     # Set up GDM and GNOME
     ./config/gnome.nix
-    ./config/xfce.nix
 
     # Configure pipewire
     ./config/pipewire.nix
@@ -43,14 +40,27 @@
     # Desktop integration bits
     ./config/desktop.nix
 
+    # Caps Lock remap
+    ./config/input.nix
+
+    # Steam, gamemode
+    ./config/gaming.nix
+
+    # OBS, instant replay, captions
+    ./config/capture.nix
+
+    # AirPlay receiver
+    ./config/airplay.nix
+
     # System fonts
     ./config/fonts.nix
 
     # Peripherals, filesystems, dev-board rules
     ./config/hardware.nix
 
-    # Firewall
+    # Firewall, Wi-Fi privacy, Tailscale
     ./config/firewall.nix
+    ./config/network.nix
 
     # Gap year stats dashboard
     ./config/gappie-dashboard.nix
@@ -58,8 +68,20 @@
     # Opt-in local Tor proxy
     ./config/tor.nix
 
-    # GC, zram, SMART monitoring
+    # Store cleanup, SMART monitoring
     ./config/maintenance.nix
+
+    # Swap, memory pressure, scheduler, build limits
+    ./config/performance.nix
+
+    # Health alerts and history graphs
+    ./config/health.nix
+    ./config/monitoring.nix
+
+    # Docker, podman
+    ./config/containers.nix
+
+    ./config/overlays.nix
 
     # Set up Postgres for development
     ./config/postgres.nix
@@ -93,44 +115,30 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  nix.settings.download-buffer-size = 4294967296; # 4 GB
-  nix.daemonCPUSchedPolicy = "idle";
+
+  nix.channel.enable = false;
 
   # Set your time zone.
   services.automatic-timezoned.enable = true;
-
-  # NTP
-  networking.timeServers = options.networking.timeServers.default;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc.lib
     zlib
+    zstd
     systemdLibs
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
     "ventoy-1.1.12"
-    "electron-41.10.7"
   ];
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  programs.obs-studio = {
-    enable = true;
-    enableVirtualCamera = true;
-  };
-
   # Bluetooth stuff
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
 
   # Configure appimages
   programs.appimage = {
@@ -148,10 +156,8 @@
       "wheel"
       "docker"
       "dialout"
-      "kvm"
       "libvirtd"
       "wireshark"
-      "input"
     ];
   };
   services.udev.packages = [ pkgs.stlink ];
@@ -161,26 +167,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    # msitools 0.106 builds, but its Bats suite fails on this nixpkgs revision.
-    # LTspice needs msiextract from the resulting package.
-    (_final: prev: {
-      msitools = prev.msitools.overrideAttrs (_old: {
-        doCheck = false;
-      });
-    })
-  ];
-
   security.polkit.enable = true;
 
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
-
-  # Make use of said allowed unfree packages
-  programs.steam = {
+  virtualisation.libvirtd = {
     enable = true;
-    extraCompatPackages = [ pkgs.proton-ge-bin ];
+    qemu.vhostUserPackages = [ pkgs.virtiofsd ];
   };
+  programs.virt-manager.enable = true;
 
   # Link portal definitions
   environment.pathsToLink = [
@@ -195,11 +188,7 @@
     git
     wget
 
-    kitty
     alacritty
-    bash
-
-    ydotool
 
     restic
 
@@ -209,10 +198,12 @@
 
   ];
 
-  # Docker!
-  virtualisation.docker.enable = true;
-
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    generateCompletions = false;
+    useBabelfish = true;
+  };
+  documentation.man.cache.enable = false;
 
   programs.ydotool.enable = true;
 

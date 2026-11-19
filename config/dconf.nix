@@ -6,12 +6,10 @@ let
   # Recolours the whole Forge palette (tiled, split, stacked, tabbed, floated
   # and the drag previews) to #3584e4, keeping each rule's alpha. The drop
   # shadows and the tabbed background are left alone.
-  forgeStylesheet =
-    pkgs.runCommand "forge-blue-borders.css" { }
-      ''
-        sed -E 's/rgba\((236, 94, 94|255, 246, 108|247, 162, 43|1[78], 199, 224|180, 167, 214|162, 247, 43), ?([0-9.]+)\)/rgba(53, 132, 228, \2)/g' \
-          ${pkgs.gnomeExtensions.forge}/share/gnome-shell/extensions/forge@jmmaranan.com/stylesheet.css > $out
-      '';
+  forgeStylesheet = pkgs.runCommand "forge-blue-borders.css" { } ''
+    sed -E 's/rgba\((236, 94, 94|255, 246, 108|247, 162, 43|1[78], 199, 224|180, 167, 214|162, 247, 43), ?([0-9.]+)\)/rgba(53, 132, 228, \2)/g' \
+      ${pkgs.gnomeExtensions.forge}/share/gnome-shell/extensions/forge@jmmaranan.com/stylesheet.css > $out
+  '';
 in
 {
   dconf = {
@@ -24,16 +22,14 @@ in
           pkgs.gnomeExtensions.appindicator.extensionUuid
           pkgs.gnomeExtensions.forge.extensionUuid
           pkgs.gnomeExtensions.all-in-one-clipboard.extensionUuid
-          pkgs.gnomeExtensions.color-picker.extensionUuid
-          pkgs.gnomeExtensions.emoji-copy.extensionUuid
           pkgs.gnomeExtensions.battery-time-percentage-compact.extensionUuid
-          pkgs.gnomeExtensions.gsconnect.extensionUuid
           pkgs.gnomeExtensions.vitals.extensionUuid
           pkgs.gnomeExtensions.spotify-controls.extensionUuid
           pkgs.gnomeExtensions.user-themes.extensionUuid
           pkgs.gnomeExtensions.brightness-control-using-ddcutil.extensionUuid
           pkgs.gnomeExtensions.caffeine.extensionUuid
-          pkgs.gnomeExtensions.rounded-window-corners-reborn.extensionUuid
+          pkgs.gnomeExtensions.quick-settings-audio-devices-hider.extensionUuid
+          pkgs.gnomeExtensions.audio-switch-shortcuts.extensionUuid
         ];
       };
       "org/gnome/shell" = {
@@ -59,7 +55,25 @@ in
         switch-to-application-8 = [ ];
         switch-to-application-9 = [ ];
         toggle-message-tray = [ "<Super>v" ];
+        # <Super>s launches taut.
+        toggle-quick-settings = [ ];
       };
+      # <Super>period belongs to all-in-one-clipboard's emoji tab.
+      "desktop/ibus/panel/emoji".hotkey = lib.hm.gvariant.mkEmptyArray lib.hm.gvariant.type.string;
+      "org/gnome/shell/extensions/all-in-one-clipboard".shortcut-open-clipboard = [ "<Super><Shift>v" ];
+      "org/gnome/shell/extensions/audio-switch-shortcuts".cycle-output-hotkey = [ "<Super><Shift>a" ];
+      "org/gnome/shell/extensions/quicksettings-audio-devices-hider".excluded-output-names = [
+        "HDMI / DisplayPort 1 Output – Core Ultra 200V Series Processors HD Audio"
+        "HDMI / DisplayPort 2 Output – Core Ultra 200V Series Processors HD Audio"
+        "HDMI / DisplayPort 3 Output – Core Ultra 200V Series Processors HD Audio"
+      ];
+      "org/gnome/desktop/search-providers".disabled = [
+        "org.gnome.Boxes.desktop"
+        "org.gnome.Epiphany.desktop"
+        "org.gnome.Characters.desktop"
+      ];
+      "org/gnome/desktop/interface".enable-hot-corners = false;
+      "org/gnome/desktop/peripherals/mouse".accel-profile = "flat";
       "org/gnome/mutter/keybindings" = {
         switch-monitor = [ "XF86Display" ];
       };
@@ -67,9 +81,14 @@ in
       "org/gnome/mutter" = {
         auto-maximize = false;
         experimental-features = [ ];
+        dynamic-workspaces = false;
+        edge-tiling = false;
+        workspaces-only-on-primary = false;
       };
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Super><Shift>q" ];
+        # <Super>h is Forge's focus-left.
+        minimize = [ ];
         move-to-workspace-1 = [ "<Super><Shift>1" ];
         move-to-workspace-2 = [ "<Super><Shift>2" ];
         move-to-workspace-3 = [ "<Super><Shift>3" ];
@@ -98,7 +117,13 @@ in
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/"
         ];
+      };
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5" = {
+        name = "save replay";
+        command = "systemctl --user kill -s SIGUSR1 replay-buffer.service";
+        binding = "<Super><Shift>r";
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         name = "alacritty";

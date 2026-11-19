@@ -24,8 +24,9 @@
   ];
 
   services.udev.extraRules = ''
-    SUBSYSTEM=="usb", ATTR{idVendor}=="2207", ATTR{idProduct}=="0019", MODE="0666"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="2207", ATTR{idProduct}=="0019", TAG+="uaccess"
     SUBSYSTEM=="usb", ATTR{idVendor}=="0451", ATTR{idProduct}=="e001|e003|e004|e008|e012", TAG+="uaccess"
+    SUBSYSTEM=="tty", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b|374e|374f|3752|3753|3754", SYMLINK+="stlink"
   '';
 
   users.users.breynard.extraGroups = [ "i2c" ];

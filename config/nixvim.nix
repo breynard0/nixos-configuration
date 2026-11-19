@@ -29,7 +29,14 @@
       updatetime = 250;
       signcolumn = "yes";
       scrolloff = 4;
+      timeoutlen = 400;
+      undofile = true;
+      ignorecase = true;
+      smartcase = true;
     };
+
+    luaLoader.enable = true;
+    plugins.lz-n.enable = true;
 
     autoCmd = [
       {
@@ -115,7 +122,10 @@
       highlight.disable = [ "svelte" ];
     };
 
-    plugins.refactoring.enable = true;
+    plugins.refactoring = {
+      enable = true;
+      lazyLoad.settings.cmd = "Refactor";
+    };
     plugins.nvim-autopairs.enable = true;
     plugins.ts-autotag.enable = true;
     plugins.auto-save = {
@@ -162,6 +172,7 @@
     };
 
     plugins.telescope.enable = true;
+    plugins.telescope.lazyLoad.settings.cmd = "Telescope";
     plugins.telescope.settings = {
       defaults.file_ignore_patterns = [ "^.git/" ];
       pickers.find_files.hidden = true;
@@ -172,12 +183,36 @@
       settings.hidden.file_browser = true;
     };
 
-    plugins.grug-far.enable = true;
+    plugins.grug-far = {
+      enable = true;
+      lazyLoad.settings.cmd = [
+        "GrugFar"
+        "GrugFarWithin"
+      ];
+    };
 
     plugins.claudecode = {
       enable = true;
       settings.terminal.split_side = "right";
+      lazyLoad.settings.cmd = [
+        "ClaudeCode"
+        "ClaudeCodeAdd"
+        "ClaudeCodeClose"
+        "ClaudeCodeDiffAccept"
+        "ClaudeCodeDiffDeny"
+        "ClaudeCodeFocus"
+        "ClaudeCodeOpen"
+        "ClaudeCodeSelectModel"
+        "ClaudeCodeSend"
+        "ClaudeCodeStart"
+        "ClaudeCodeStatus"
+        "ClaudeCodeStop"
+        "ClaudeCodeTreeAdd"
+      ];
     };
+
+    plugins.which-key.enable = true;
+    plugins.fidget.enable = true;
 
     plugins.lspconfig.enable = true;
     lsp.servers = {
@@ -201,6 +236,10 @@
       bashls.enable = true;
       dockerls.enable = true;
       marksman.enable = true;
+      ruby_lsp.enable = true;
+      slint_lsp.enable = true;
+      gdscript.enable = true;
+      ruff.enable = true;
     };
     lsp.inlayHints.enable = true;
     lsp.keymaps = [
@@ -215,6 +254,7 @@
       {
         key = "gr";
         lspBufAction = "references";
+        options.nowait = true;
       }
       {
         key = "gI";
@@ -330,14 +370,9 @@
       };
     };
 
-    plugins.supermaven = {
-      enable = true;
-      settings.keymaps.accept_suggestion = "<C-a>";
-      settings.condition.__raw = "function() return not vim.g.ai_enabled end";
-    };
-
     plugins.neo-tree = {
       enable = true;
+      lazyLoad.settings.cmd = "Neotree";
       settings = {
         window = {
           position = "right";
@@ -371,24 +406,134 @@
       ];
     };
 
-    plugins.dap.enable = true;
-    plugins.dap-ui.enable = true;
-    plugins.dap-virtual-text.enable = true;
+    plugins.dap = {
+      enable = true;
+      lazyLoad.settings.cmd = [
+        "DapClearBreakpoints"
+        "DapContinue"
+        "DapDisconnect"
+        "DapPause"
+        "DapRestartFrame"
+        "DapSetLogLevel"
+        "DapShowLog"
+        "DapStepInto"
+        "DapStepOut"
+        "DapStepOver"
+        "DapTerminate"
+        "DapToggleBreakpoint"
+        "DapToggleRepl"
+      ];
+      luaConfig.pre = ''
+        require("lz.n").trigger_load({
+          "nvim-dap-ui",
+          "nvim-dap-virtual-text",
+          "nvim-dap-lldb",
+          "nvim-dap-python",
+          "nvim-dap-go",
+        })
+      '';
+      luaConfig.post = ''
+        local dap, dapui = require("dap"), require("dapui")
+        dap.listeners.after.event_initialized["dapui_config"] = function()
+          dapui.open()
+        end
+        dap.listeners.before.event_terminated["dapui_config"] = function()
+          dapui.close()
+        end
+        dap.listeners.before.event_exited["dapui_config"] = function()
+          dapui.close()
+        end
+      '';
+    };
+    plugins.dap-ui = {
+      enable = true;
+      lazyLoad.settings.lazy = true;
+    };
+    plugins.dap-virtual-text = {
+      enable = true;
+      lazyLoad.settings.lazy = true;
+    };
     plugins.dap-lldb = {
       enable = true;
+      lazyLoad.settings.lazy = true;
       settings.codelldb_path = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
     };
-    plugins.dap-python.enable = true;
-    plugins.dap-go.enable = true;
-    extraPackages = [ pkgs.delve ];
+    plugins.dap-python = {
+      enable = true;
+      lazyLoad.settings.lazy = true;
+    };
+    plugins.dap-go = {
+      enable = true;
+      lazyLoad.settings.lazy = true;
+    };
+    extraPackages = with pkgs; [
+      delve
+      clang-tools
+      gofumpt
+      gotools
+      prettier
+      taplo
+      typstyle
+      isort
+      black
+      stylua
+      nixfmt
+      shfmt
+    ];
 
-    plugins.gitsigns.enable = true;
-    plugins.neogit.enable = true;
-    plugins.octo.enable = true;
+    plugins.gitsigns = {
+      enable = true;
+      lazyLoad.settings = {
+        event = [
+          "BufReadPre"
+          "BufNewFile"
+        ];
+        cmd = "Gitsigns";
+      };
+    };
+    plugins.neogit = {
+      enable = true;
+      lazyLoad.settings = {
+        cmd = [
+          "Neogit"
+          "NeogitCommit"
+          "NeogitLogCurrent"
+          "NeogitResetState"
+        ];
+        before.__raw = ''
+          function()
+            require("lz.n").trigger_load("telescope.nvim")
+          end
+        '';
+      };
+    };
+    plugins.octo = {
+      enable = true;
+      lazyLoad.settings = {
+        cmd = "Octo";
+        before.__raw = ''
+          function()
+            require("lz.n").trigger_load("telescope.nvim")
+          end
+        '';
+      };
+    };
+    plugins.diffview = {
+      enable = true;
+      lazyLoad.settings.cmd = [
+        "DiffviewClose"
+        "DiffviewFileHistory"
+        "DiffviewFocusFiles"
+        "DiffviewLog"
+        "DiffviewOpen"
+        "DiffviewRefresh"
+        "DiffviewToggleFiles"
+      ];
+    };
 
     plugins.conform-nvim = {
       enable = true;
-      autoInstall.enable = true;
+      lazyLoad.settings.cmd = "ConformInfo";
       settings = {
         formatters_by_ft = {
           c = [ "clang_format" ];
@@ -420,11 +565,68 @@
       };
     };
 
-    plugins.distant.enable = true;
+    plugins.distant = {
+      enable = true;
+      lazyLoad.settings.cmd = [
+        "Distant"
+        "DistantCancelSearch"
+        "DistantCheckHealth"
+        "DistantClientVersion"
+        "DistantConnect"
+        "DistantCopy"
+        "DistantInstall"
+        "DistantLaunch"
+        "DistantMetadata"
+        "DistantMkdir"
+        "DistantOpen"
+        "DistantRemove"
+        "DistantRename"
+        "DistantSearch"
+        "DistantSessionInfo"
+        "DistantShell"
+        "DistantSpawn"
+        "DistantSystemInfo"
+      ];
+    };
 
-    plugins.vim-dadbod.enable = true;
-    plugins.vim-dadbod-ui.enable = true;
-    plugins.vim-dadbod-completion.enable = true;
+    plugins.vim-dadbod = {
+      enable = true;
+      lazyLoad.settings.cmd = "DB";
+    };
+    plugins.vim-dadbod-ui = {
+      enable = true;
+      lazyLoad.settings = {
+        cmd = [
+          "DBUI"
+          "DBUIAddConnection"
+          "DBUIClose"
+          "DBUIFindBuffer"
+          "DBUILastQueryInfo"
+          "DBUIRenameBuffer"
+          "DBUIToggle"
+        ];
+        before.__raw = ''
+          function()
+            require("lz.n").trigger_load("vim-dadbod")
+          end
+        '';
+      };
+    };
+    plugins.vim-dadbod-completion = {
+      enable = true;
+      lazyLoad.settings = {
+        ft = [
+          "sql"
+          "mysql"
+          "plsql"
+        ];
+        before.__raw = ''
+          function()
+            require("lz.n").trigger_load("vim-dadbod")
+          end
+        '';
+      };
+    };
     globals.mapleader = " ";
     globals.maplocalleader = " ";
     globals.db_ui_use_nerd_fonts = 1;
@@ -452,12 +654,11 @@
             "<C-S-Left>    Previous buffer",
             "<C-S-Right>   Next buffer",
             "<C-n>         New file (Telescope file browser)",
-            "<C-d>         Toggle file explorer (Neo-tree)",
+            "<leader>e     Toggle file explorer (Neo-tree)",
             "<leader>cc    Toggle Claude Code panel",
             "<C-p>         Toggle cursor visibility",
             "<C-;>         Toggle line comment",
             "<C-S-i>       Format buffer",
-            "<leader>ai    Toggle AI suggestions (Supermaven)",
             "<leader>gg    Open Neogit",
             "<leader>gs    Git status (hover to diff, <Tab> to stage)",
             "<leader>hx    Toggle hex view (hex.nvim)",
@@ -465,7 +666,6 @@
             "-- Completion (insert mode) --",
             "<C-Space>     Open completion menu",
             "<Tab>         Next item",
-            "<C-a>         Accept AI suggestion",
             "<S-Tab>       Previous item / dedent",
             "<CR>          Confirm completion",
             "<C-e>         Abort completion",
@@ -715,31 +915,22 @@
         }
       end
 
-      local dap, dapui = require("dap"), require("dapui")
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
+      -- built-in gr* LSP maps make `gr` wait for timeoutlen
+      for _, lhs in ipairs({ "grn", "gra", "grx", "grr", "gri", "grt" }) do
+        pcall(vim.keymap.del, "n", lhs)
       end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
+      pcall(vim.keymap.del, "x", "gra")
+
+      -- netrw hijacking only happens once these are loaded
+      for _, arg in ipairs(vim.fn.argv()) do
+        if vim.fn.isdirectory(arg) == 1 then
+          require("lz.n").trigger_load({ "telescope.nvim", "neo-tree.nvim" })
+          break
+        end
       end
     '';
 
     keymaps = [
-      {
-        key = "<CapsLock>";
-        action = "<Esc>";
-        mode = [
-          "n"
-          "i"
-          "v"
-          "x"
-          "s"
-          "o"
-        ];
-      }
       {
         key = "<C-f>";
         action = "<cmd>Telescope find_files<cr>";
@@ -750,7 +941,12 @@
       }
       {
         key = "<S-F2>";
-        action.__raw = "function() require('grug-far').open({ prefills = { search = vim.fn.expand('<cword>') } }) end";
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("grug-far.nvim")
+            require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } })
+          end
+        '';
       }
       {
         key = "<leader>gg";
@@ -759,22 +955,6 @@
       {
         key = "<leader>gs";
         action = "<cmd>Telescope git_status<cr>";
-      }
-      {
-        key = "<leader>ai";
-        action.__raw = ''
-          function()
-            local api = require('supermaven-nvim.api')
-            vim.g.ai_enabled = not vim.g.ai_enabled
-            if vim.g.ai_enabled then
-              api.start()
-            elseif api.is_running() then
-              api.stop()
-            end
-            local state = vim.g.ai_enabled and "on" or "off"
-            vim.notify("AI suggestions turned " .. state, vim.log.levels.INFO)
-          end
-        '';
       }
       {
         mode = "n";
@@ -789,7 +969,7 @@
         action.__raw = "function() return require('vim._comment').operator() end";
       }
       {
-        key = "<C-d>";
+        key = "<leader>e";
         action = "<Cmd>Neotree toggle<CR>";
       }
       {
@@ -804,6 +984,7 @@
         key = "<C-n>";
         action.__raw = ''
           function()
+            require("lz.n").trigger_load("telescope.nvim")
             require("telescope").extensions.file_browser.file_browser({
               path = "%:p:h",
               select_buffer = true,
@@ -843,42 +1024,87 @@
           "v"
         ];
         key = "<C-S-i>";
-        action.__raw = "function() require('conform').format({ async = true, lsp_format = 'fallback' }) end";
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("conform.nvim")
+            require("conform").format({ async = true, lsp_format = "fallback" })
+          end
+        '';
       }
       {
         key = "<F5>";
-        action.__raw = "function() require('dap').continue() end";
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("nvim-dap")
+            require("dap").continue()
+          end
+        '';
       }
       {
         key = "<F10>";
-        action.__raw = "function() require('dap').step_over() end";
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("nvim-dap")
+            require("dap").step_over()
+          end
+        '';
       }
       {
         key = "<F11>";
-        action.__raw = "function() require('dap').step_into() end";
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("nvim-dap")
+            require("dap").step_into()
+          end
+        '';
       }
       {
         key = "<F12>";
-        action.__raw = "function() require('dap').step_out() end";
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("nvim-dap")
+            require("dap").step_out()
+          end
+        '';
       }
       {
         key = "<leader>db";
-        action.__raw = "function() require('dap').toggle_breakpoint() end";
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("nvim-dap")
+            require("dap").toggle_breakpoint()
+          end
+        '';
       }
       {
         key = "<leader>du";
-        action.__raw = "function() require('dapui').toggle() end";
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("nvim-dap")
+            require("dapui").toggle()
+          end
+        '';
       }
       {
         mode = "x";
         key = "<leader>rf";
-        action.__raw = "function() return require('refactoring').extract_func() end";
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("refactoring.nvim")
+            return require("refactoring").extract_func()
+          end
+        '';
         options.expr = true;
       }
       {
         mode = "x";
         key = "<leader>rv";
-        action.__raw = "function() return require('refactoring').extract_var() end";
+        action.__raw = ''
+          function()
+            require("lz.n").trigger_load("refactoring.nvim")
+            return require("refactoring").extract_var()
+          end
+        '';
         options.expr = true;
       }
     ];

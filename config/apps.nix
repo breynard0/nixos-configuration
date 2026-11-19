@@ -14,50 +14,27 @@ let
         --add-flags "--ozone-platform=x11"
     '';
   };
-  comfyui = pkgs.symlinkJoin {
-    name = "comfyui-xpu";
-    paths = [ inputs.comfyui-nix.packages.${pkgs.stdenv.hostPlatform.system}.xpu ];
+  custom = import ../pkgs { inherit pkgs inputs; };
+  obsidian = pkgs.obsidian.override { electron = pkgs.electron_44; };
+  # taut's stdout was 94% of the user journal.
+  taut = pkgs.symlinkJoin {
+    name = "taut-quiet";
+    paths = [ inputs.taut.packages.${pkgs.stdenv.hostPlatform.system}.default ];
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
-      wrapProgram $out/bin/comfy-ui \
-        --run 'export COMFY_USER_DIR="''${COMFY_USER_DIR:-$HOME/.local/share/comfyui}"'
+      wrapProgram $out/bin/taut --run 'exec >/dev/null 2>&1'
     '';
   };
-  emdash = pkgs.callPackage ../pkgs/emdash.nix { };
-  nimbalyst = pkgs.callPackage ../pkgs/nimbalyst.nix { };
-  antigravity-cli = pkgs.callPackage ../pkgs/antigravity-cli.nix { };
-  got-your-back = pkgs.callPackage ../pkgs/got-your-back.nix { };
-  sheepit-client = pkgs.callPackage ../pkgs/sheepit-client.nix { };
-  tilp = pkgs.callPackage ../pkgs/tilp.nix { };
-  helium = pkgs.callPackage ../pkgs/helium.nix { };
-  ytubic = pkgs.callPackage ../pkgs/ytubic.nix { };
-  obsidian = pkgs.obsidian.override {
-    inherit (inputs.nixpkgs-electron.legacyPackages.${pkgs.stdenv.hostPlatform.system}) electron;
-  };
-  paseoDesktop = inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system}.desktop.overrideAttrs (old: {
-    # The desktop resolves @getpaseo/server's package export at startup, but
-    # Paseo's runtime tracer does not see this dynamic resolution.
-    postPatch = (old.postPatch or "") + ''
-      substituteInPlace scripts/trace-daemon.mjs \
-        --replace-fail '  "packages/cli/dist/index.js",' \
-          '  "packages/server/dist/server/server/exports.js",
-  "packages/cli/dist/index.js",'
-    '';
-    postInstall = (old.postInstall or "") + ''
-      test -f "$out/share/paseo-desktop/node_modules/@getpaseo/server/dist/server/server/exports.js"
-    '';
-  });
 in
 {
   home.packages = with pkgs; [
     # System app suite
     chromium # Required by the JetBrains markdown plugin preview
-    helium
-    ytubic
+    custom.helium
+    custom.ytubic
     inputs.myreview.packages.${pkgs.stdenv.hostPlatform.system}.default
     tor-browser
     lite-xl
-    evince
     pdfarranger
     dconf-editor
     dbus.lib
@@ -66,15 +43,14 @@ in
 
     # Other apps
     opencode
-    opencode-desktop
     lsfg-vk-ui
     ffmpeg
     equibop
     spotifyX11
     speedcrunch
     blender
-    sheepit-client
-    tilp
+    custom.sheepit-client
+    custom.tilp
     cemu-ti
     gtkwave
     godot
@@ -83,7 +59,6 @@ in
     thunderbird
     zoom-us
     libreoffice
-    onlyoffice-desktopeditors
     kicad
     gimp
     localsend
@@ -109,26 +84,40 @@ in
     ghidra
     imhex
     dbeaver-bin
-    beekeeper-studio
-    emdash
-    comfyui
-    antigravity-cli
-    got-your-back
-    nimbalyst
+    custom.antigravity-cli
+    custom.got-your-back
     ventoy-full
     audacity
     github-desktop
     figma-linux
-    inputs.taut.packages.${pkgs.stdenv.hostPlatform.system}.default
-    paseoDesktop
+    taut
     inputs.claude-desktop.packages.${pkgs.stdenv.hostPlatform.system}.default
     (pkgs.lib.lowPrio inputs.ableton-linux.packages.${pkgs.stdenv.hostPlatform.system}.default)
     whisper-ctranslate2
 
+    # Capture and notes
+    xournalpp
+    gnome-frog
+    gradia
+
+    # Audio
+    pwvucontrol
+    qpwgraph
+    easyeffects
+
+    # System
+    nvtopPackages.intel
+    qalculate-gtk
+    file-roller
+    restic-browser
+
+    # Media and compatibility
+    handbrake
+    foliate
+    fragments
+    bottles
+
     android-tools
-    pkg-config
-    systemd.dev
-    libusb1.dev
 
     # TODO: Delete these three packages when they are no longer needed.
     gnumake

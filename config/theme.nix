@@ -113,13 +113,6 @@ in
       name = gtkThemeName;
     };
 
-    # GTK 4 ignores gtk-theme-name, so home-manager imports the theme's CSS
-    # from gtk.css instead. That only happens when gtk4.theme is set explicitly.
-    gtk4.theme = {
-      package = gtkTheme;
-      name = gtkThemeName;
-    };
-
     iconTheme = {
       package = iconTheme;
       name = iconThemeName;

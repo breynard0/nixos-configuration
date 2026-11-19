@@ -3,15 +3,10 @@
 {
   programs.vscode = {
     enable = true;
-    # 1.144 moved its bundled ripgrep; nixpkgs still patches the old path.
-    package = pkgs.vscode.overrideAttrs (old: {
-      postPatch =
-        builtins.replaceStrings
-          [ "resources/app/node_modules/@vscode/ripgrep/bin/rg" ]
-          [ "resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/linux-x64/rg" ]
-          old.postPatch;
-    });
+    profiles.default.enableUpdateCheck = false;
+    profiles.default.enableExtensionUpdateCheck = false;
     profiles.default.userSettings = {
+      "telemetry.telemetryLevel" = "off";
       "editor.fontFamily" = "'JetBrainsMono Nerd Font Mono', monospace";
       "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font Mono', monospace";
       "nix.enableLanguageServer" = true;
