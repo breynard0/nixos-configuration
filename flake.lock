@@ -79,6 +79,26 @@
         "type": "github"
       }
     },
+    "delta": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795123226,
+        "narHash": "sha256-gR1Cr+yANKzA/ZoWg2rR4toQE8t4b5IGtrmh7922/gk=",
+        "owner": "zed-industries",
+        "repo": "delta-nix",
+        "rev": "c6b07c8d070a189f08e06dcad466424ae69d9202",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zed-industries",
+        "repo": "delta-nix",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -366,6 +386,7 @@
         "claude-code": "claude-code",
         "claude-desktop": "claude-desktop",
         "comfyui-nix": "comfyui-nix",
+        "delta": "delta",
         "gappie-dashboard": "gappie-dashboard",
         "home-manager": "home-manager",
         "myreview": "myreview",

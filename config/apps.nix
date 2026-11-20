@@ -33,6 +33,8 @@ in
     custom.helium
     custom.ytubic
     inputs.myreview.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # Shares its binary name with git-delta, which git reaches by store path.
+    (pkgs.lib.hiPrio inputs.delta.packages.${pkgs.stdenv.hostPlatform.system}.delta)
     tor-browser
     lite-xl
     pdfarranger
