@@ -10,5 +10,15 @@
         doCheck = false;
       });
     })
+
+    # Every pick snapshots the whole stage into a GPU texture. Upstream leaves
+    # freeing it to the garbage collector, which let gnome-shell reach 28 GiB.
+    (_final: prev: {
+      gnomeExtensions = prev.gnomeExtensions // {
+        color-picker = prev.gnomeExtensions.color-picker.overrideAttrs (old: {
+          patches = (old.patches or [ ]) ++ [ ../pkgs/color-picker-release-snapshot.patch ];
+        });
+      };
+    })
   ];
 }

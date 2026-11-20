@@ -8,6 +8,7 @@
     gnomeExtensions.appindicator
     gnomeExtensions.forge
     gnomeExtensions.all-in-one-clipboard
+    gnomeExtensions.color-picker
     gnomeExtensions.battery-time-percentage-compact
     gnomeExtensions.vitals
     gnomeExtensions.spotify-controls

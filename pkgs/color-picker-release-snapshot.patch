@@ -1,0 +1,34 @@
+--- a/extension.js
++++ b/extension.js
+@@ -8,6 +8,7 @@
+ import Shell from 'gi://Shell';
+ import Clutter from 'gi://Clutter';
+ import GObject from 'gi://GObject';
++import System from 'system';
+ 
+ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+ import * as Slider from 'resource:///org/gnome/shell/ui/slider.js';
+@@ -309,6 +310,13 @@
+         this.set_content(content);
+         this.$meta = {scale, texture, width: texture.get_width() - 1, height: texture.get_height() - 1};
+         this.$pick = this.$$pick;
++        this.connect('destroy', () => {
++            this.$pick = T.nop;
++            this.$meta = null;
++            this.set_content(null);
++            // the stage snapshot is only freed once its JS wrappers are collected
++            [500, 2000].forEach(ms => GLib.timeout_add(GLib.PRIORITY_LOW, ms, () => (System.gc(), GLib.SOURCE_REMOVE)));
++        });
+         if(this.$coords) this.$pick(this.$coords);
+     }
+ 
+@@ -332,7 +340,9 @@
+             {scale, width, height, texture} = this.$meta,
+             stream = Gio.MemoryOutputStream.new_resizable(),
+             [a, b, w, h, c_x, c_y, r] = this.$getLoupe(x, y, scale, width, height);
++        if(a < 0 || b < 0 || w < 1 || h < 1 || a + w > texture.get_width() || b + h > texture.get_height()) return null;
+         return Shell.Screenshot.composite_to_stream(texture, a, b, w, h, scale, null, 0, 0, 1, stream).then(pixbuf => {
++            if(!this.$meta) return;
+             let pixels = pixbuf.get_pixels();
+             this.$color.fromPixels(pixels, (c_y * w + c_x) * 4);
+             this.$src.viewer?.hub?.summon({x, y, color: this.$color, pixels, area: [w, h, c_x, c_y, r]});

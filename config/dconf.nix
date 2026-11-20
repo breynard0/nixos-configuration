@@ -22,6 +22,7 @@ in
           pkgs.gnomeExtensions.appindicator.extensionUuid
           pkgs.gnomeExtensions.forge.extensionUuid
           pkgs.gnomeExtensions.all-in-one-clipboard.extensionUuid
+          pkgs.gnomeExtensions.color-picker.extensionUuid
           pkgs.gnomeExtensions.battery-time-percentage-compact.extensionUuid
           pkgs.gnomeExtensions.vitals.extensionUuid
           pkgs.gnomeExtensions.spotify-controls.extensionUuid
