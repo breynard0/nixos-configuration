@@ -26,11 +26,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1794870087,
-        "narHash": "sha256-JggThKdK7+7Dm0J2Mg6k3F7+rdU4uD25MW1t48FeEB4=",
+        "lastModified": 1795215682,
+        "narHash": "sha256-NzqBLAIGMiQesm6Fe0hO9OXjBzeNJ9x6XO9F97pTKaw=",
         "owner": "sadjow",
         "repo": "claude-code-nix",
-        "rev": "ab27a02c0f2d046e8d4ed53fb03c0649bdfae191",
+        "rev": "4c9d590f6924cd7bb4437c0a8636abc3ea506ad3",
         "type": "github"
       },
       "original": {
@@ -47,11 +47,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794934772,
-        "narHash": "sha256-csu6Jk0KUqiyyVXLOUmy7efn5y3aRq+ConWf0MqI29U=",
+        "lastModified": 1795223295,
+        "narHash": "sha256-SbsS1bZx97OdZ+2yd7aupAkwOk+BBCdW+DTX4T6I0BU=",
         "owner": "aaddrick",
         "repo": "claude-desktop-debian",
-        "rev": "adaec9803a00a72bde48a44dbd0f0419ee7fca3f",
+        "rev": "f7dd9c8441f0da7b50e5ba4c713134eef1bdbb0b",
         "type": "github"
       },
       "original": {
@@ -86,11 +86,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795123226,
-        "narHash": "sha256-gR1Cr+yANKzA/ZoWg2rR4toQE8t4b5IGtrmh7922/gk=",
+        "lastModified": 1795187763,
+        "narHash": "sha256-Jn9AIfi2DZNzJi5gTTcXzsC+H0LUDujwUpQWXpb567I=",
         "owner": "zed-industries",
         "repo": "delta-nix",
-        "rev": "c6b07c8d070a189f08e06dcad466424ae69d9202",
+        "rev": "8df460e37d538687342165f42e326cc9384c3e82",
         "type": "github"
       },
       "original": {
@@ -163,11 +163,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795120150,
-        "narHash": "sha256-24x84DO1WpBoWrocd8RlmTUrbfYhLKNV4J7FeR/keTM=",
+        "lastModified": 1795279462,
+        "narHash": "sha256-R8fYaH79EizHYtV9vqqqC26csXQWCMBLKwW4LFaiB4A=",
         "ref": "refs/heads/main",
-        "rev": "a51b7dbde56a1338f23474bcd58c8d692bff112a",
-        "revCount": 8,
+        "rev": "c1876ad09edfef8532f73eb23121f405d6a9e16a",
+        "revCount": 9,
         "type": "git",
         "url": "ssh://git@github.com/breynard0/gappie-dashboard"
       },
@@ -297,11 +297,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1794537146,
-        "narHash": "sha256-Wpz/7x/YWnDIBu7yj6ixe8j6fIMsidd9Y+o1PqPF3iM=",
+        "lastModified": 1795234589,
+        "narHash": "sha256-f/VVvxf5RsQgWVhUtefoca5ktVg0DA2bnkMOcmSnozo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d5cc6833999746cffdfe0598f7bc801a57b887a9",
+        "rev": "2786a2a72088ecf32aea5b3ec52099e6a7cff78f",
         "type": "github"
       },
       "original": {
@@ -329,11 +329,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1794872590,
-        "narHash": "sha256-E+XLAfnC7+bdr4qlEgRv6cdGmiqTU5oeFNKCha7epqQ=",
+        "lastModified": 1795137884,
+        "narHash": "sha256-iKXCN36qYfBni+3nH4vAd98/kshoIsPB2S9mYWhma30=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f68407657ad294471eb4b2e65d193df26edf729f",
+        "rev": "ab5c18fdedfc8f9bbc9d773f10a540790e2787a7",
         "type": "github"
       },
       "original": {
@@ -435,11 +435,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793987502,
-        "narHash": "sha256-vmlBpivJe1odx+6A2GlgPHgw2JL/+Wdz/blOhGwk0NY=",
+        "lastModified": 1795109605,
+        "narHash": "sha256-doWnUruMHskvMpfZIYmP7R17zA0ewlNwD3hW/21DsUA=",
         "owner": "jeremy46231",
         "repo": "taut",
-        "rev": "6fe5123e3b4cffaa16c6dda71291ad5d82cdad37",
+        "rev": "efe682dec8b84da7f65420106df55e52584923c1",
         "type": "github"
       },
       "original": {
