@@ -16,6 +16,12 @@
         Value = 1;
         Status = "default";
       };
+      # GeoClue needs about 7 s for a Wi-Fi fix; the 5 s default gives up and
+      # falls back to an IP-based guess.
+      Preferences."geo.provider.geoclue.mls_fallback_timeout_ms" = {
+        Value = 20000;
+        Status = "default";
+      };
     };
   };
 }
