@@ -2,7 +2,6 @@
 let
   ides = [
     "rust-rover"
-    "clion"
   ];
 
   # Shadows the real package (hence lowPrio below) so the IDE launches detached from the terminal.
