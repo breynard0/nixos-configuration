@@ -78,6 +78,14 @@
     # with more details log output
     nix-output-monitor
 
+    # `nh os switch` that asks for the sudo password before building, then
+    # keeps the ticket fresh so the activation at the end doesn't prompt again.
+    (writeShellScriptBin "snrs" ''
+      sudo -v || exit
+      while kill -0 $$ 2>/dev/null && sudo -n -v 2>/dev/null; do sleep 60; done &
+      nh os switch "$@"
+    '')
+
     # productivity
     htop
     iotop # io monitoring
@@ -140,7 +148,6 @@
 
   home.shellAliases = {
     nd = "nix develop --command fish";
-    snrs = "nh os switch";
     ns = "tv nix-search-tv";
     z = "cd";
     zi = "cdi";

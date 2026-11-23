@@ -97,6 +97,9 @@
 
     # Firefox
     ./config/firefox.nix
+
+    # Helium kept warm in the background
+    ./config/helium.nix
   ];
 
   # Enable Flakes
