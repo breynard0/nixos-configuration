@@ -47,11 +47,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795223295,
-        "narHash": "sha256-SbsS1bZx97OdZ+2yd7aupAkwOk+BBCdW+DTX4T6I0BU=",
+        "lastModified": 1795400311,
+        "narHash": "sha256-FX/mabBC4O24RcGpbqhs4oERQIyO5PtHu2pjPjXS6B0=",
         "owner": "aaddrick",
         "repo": "claude-desktop-debian",
-        "rev": "f7dd9c8441f0da7b50e5ba4c713134eef1bdbb0b",
+        "rev": "3a84a60c7754062e63f89cf0c143e095538e1806",
         "type": "github"
       },
       "original": {
@@ -86,11 +86,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795187763,
-        "narHash": "sha256-Jn9AIfi2DZNzJi5gTTcXzsC+H0LUDujwUpQWXpb567I=",
+        "lastModified": 1795438681,
+        "narHash": "sha256-MR4Clm1jd6yIc0ZNO9J67VS+F6KX5NicF+77e9AuxvI=",
         "owner": "zed-industries",
         "repo": "delta-nix",
-        "rev": "8df460e37d538687342165f42e326cc9384c3e82",
+        "rev": "0448cbb91eea4e50ac976ef74e1b3fa5e6fee031",
         "type": "github"
       },
       "original": {
@@ -163,11 +163,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795328253,
-        "narHash": "sha256-riFoFrYt1fwxlzuOP4xC4+0cE/tt8nMYZYJyRnTrdqw=",
+        "lastModified": 1795447237,
+        "narHash": "sha256-4P/hiNscQcc33gCcumzKGNCCO4pXaILxfc4VPhAxjm0=",
         "ref": "refs/heads/main",
-        "rev": "a75e65690c6853cade5aea6c48b25ed9a78114c8",
-        "revCount": 10,
+        "rev": "d77e16b40f3cbdcfe24fa6ae7e6a6405fc165c63",
+        "revCount": 11,
         "type": "git",
         "url": "ssh://git@github.com/breynard0/gappie-dashboard"
       },
@@ -183,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794943722,
-        "narHash": "sha256-Qkh6uNyMsic61gfyOO8VXnC+HEBdti6Xe2kKiMf66O0=",
+        "lastModified": 1795325060,
+        "narHash": "sha256-XYoMPsqRFZ6jOaYI1KAAu8fzqif4tkCX8mhEKrViDXQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5643e73425b85ac359ba2aaf83deae8ce1cd7968",
+        "rev": "6480d7d8533b88c78cc6dcda395ab89cd546e450",
         "type": "github"
       },
       "original": {
@@ -204,8 +204,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1795059677,
-        "narHash": "sha256-+77a0RWdhwCiwdt5qwX2Ya4fxB3J9SUXdDy0dAj82m8=",
+        "lastModified": 1795448619,
+        "narHash": "sha256-/xo9VTXBWgBmiZswJGDAkEjIAstx8XCOoxDJWnIBm50=",
         "path": "/home/breynard/Agentic/MyReview",
         "type": "path"
       },
@@ -236,11 +236,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794739050,
-        "narHash": "sha256-PCGNIyAydZcdUXCxEXTjrS1+wWS+k9E+ENqBkUK2Mpg=",
+        "lastModified": 1795345257,
+        "narHash": "sha256-p1dA8lUFQTLJfDI2gaTZQ+CcMKw3nxvyHNbwpVMy2rY=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "9bd074026d6db75b59aae8cd6071b5f2fe27a36c",
+        "rev": "905f3e6f1e78165e79457c0bbe7ec4b885a5fce1",
         "type": "github"
       },
       "original": {
@@ -329,11 +329,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1795137884,
-        "narHash": "sha256-iKXCN36qYfBni+3nH4vAd98/kshoIsPB2S9mYWhma30=",
+        "lastModified": 1795370043,
+        "narHash": "sha256-s/0jq8usZtLVOolYBwmyUmd3JsfAu7w3FU+a0dgMqSY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ab5c18fdedfc8f9bbc9d773f10a540790e2787a7",
+        "rev": "0dc498bfe49baeb18b0f9891e800b53bb2603193",
         "type": "github"
       },
       "original": {
