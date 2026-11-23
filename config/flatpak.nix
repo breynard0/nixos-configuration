@@ -13,12 +13,20 @@
         name = "orion-beta";
         location = "https://flatpak.orionbrowser.com/orion-beta.flatpakrepo";
       }
+      {
+        name = "ladybird";
+        location = "https://flatpak.ladybird.org/ladybird.flatpakrepo";
+      }
     ];
 
     packages = [
       {
         appId = "com.kagi.Orion";
         origin = "orion-beta";
+      }
+      {
+        appId = "org.ladybird.Ladybird";
+        origin = "ladybird";
       }
       {
         appId = "app.openbubbles.OpenBubbles";
