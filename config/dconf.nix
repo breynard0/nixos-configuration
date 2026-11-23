@@ -1,5 +1,12 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
+  custom = import ../pkgs { inherit pkgs inputs; };
+
   # Forge never reads its *-border-color gschema keys: at runtime it only
   # applies CSS class names, and its prefs UI writes colours straight into this
   # stylesheet. So the border colours have to be set in the sheet itself.
@@ -31,6 +38,7 @@ in
           pkgs.gnomeExtensions.caffeine.extensionUuid
           pkgs.gnomeExtensions.quick-settings-audio-devices-hider.extensionUuid
           pkgs.gnomeExtensions.audio-switch-shortcuts.extensionUuid
+          custom.dinosaur-lockscreen.extensionUuid
         ];
       };
       "org/gnome/shell" = {

@@ -19,6 +19,9 @@
 
     nerd-fonts.jetbrains-mono
     adwaita-fonts
+
+    # The lock screen phrases are set in it.
+    vt323
   ];
 
   fonts.fontconfig.defaultFonts = {

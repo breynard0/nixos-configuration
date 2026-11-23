@@ -2,6 +2,7 @@
 {
   antigravity-cli = pkgs.callPackage ./antigravity-cli.nix { };
   comfyui = pkgs.callPackage ./comfyui.nix { inherit (inputs) comfyui-nix; };
+  dinosaur-lockscreen = pkgs.callPackage ./dinosaur-lockscreen { };
   helium = pkgs.callPackage ./helium.nix { };
   sheepit-client = pkgs.callPackage ./sheepit-client.nix { };
   tilp = pkgs.callPackage ./tilp.nix { };

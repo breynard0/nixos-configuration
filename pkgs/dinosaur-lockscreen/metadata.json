@@ -1,0 +1,7 @@
+{
+  "uuid": "dinosaur-lockscreen@breynard",
+  "name": "Dinosaur Lock Screen",
+  "description": "Redraws dinosaurbbq.org behind the lock screen.",
+  "shell-version": ["50"],
+  "session-modes": ["unlock-dialog"]
+}

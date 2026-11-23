@@ -1,4 +1,12 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  custom = import ../pkgs { inherit pkgs inputs; };
+in
 {
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -17,6 +25,7 @@
     gnomeExtensions.caffeine
     gnomeExtensions.quick-settings-audio-devices-hider
     gnomeExtensions.audio-switch-shortcuts
+    custom.dinosaur-lockscreen
 
     # appindicator spawns gjs for some tray menus.
     gjs
