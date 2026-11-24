@@ -86,6 +86,9 @@
     # Set up Postgres for development
     ./config/postgres.nix
 
+    # Redis for development
+    ./config/redis.nix
+
     # Intel NPU / OpenVINO
     ./config/npu.nix
 

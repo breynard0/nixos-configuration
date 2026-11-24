@@ -7,7 +7,10 @@ import St from 'gi://St';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 
-const PW_PLAY = '@pwPlay@';
+const FFMPEG = '@ffmpeg@';
+const MUSIC_MS = Number('@musicSeconds@') * 1000;
+// Roughly how long the player takes from being spawned to making sound.
+const PLAYER_START_MS = 50;
 
 const DANCE_FRAMES = 16;
 const DANCE_FRAME_MS = 60;
@@ -316,12 +319,21 @@ export default class DinosaurLockscreen extends Extension {
         }
     }
 
+    // The track is started at the point it would have reached had it been
+    // playing since the animation began, so the two stay in step however
+    // often the music is toggled.
     _play() {
-        const started = GLib.get_monotonic_time();
+        const elapsed = (GLib.get_monotonic_time() - this._startTime) / 1000;
+        const offset = ((elapsed + PLAYER_START_MS) % MUSIC_MS) / 1000;
         let player;
         try {
             player = Gio.Subprocess.new(
-                [PW_PLAY, this.dir.get_child('assets').get_child('music.ogg').get_path()],
+                [
+                    FFMPEG, '-nostdin', '-v', 'error',
+                    '-stream_loop', '-1', '-ss', offset.toFixed(3),
+                    '-i', this.dir.get_child('assets').get_child('music.ogg').get_path(),
+                    '-f', 'pulse', 'Dinosaur Lock Screen',
+                ],
                 Gio.SubprocessFlags.STDOUT_SILENCE | Gio.SubprocessFlags.STDERR_SILENCE);
         } catch (e) {
             console.error(e);
@@ -333,11 +345,7 @@ export default class DinosaurLockscreen extends Extension {
             if (this._player !== player)
                 return;
             this._player = null;
-            // Loop the track, but never respawn a player that died straight away.
-            if (GLib.get_monotonic_time() - started > 5 * GLib.USEC_PER_SEC)
-                this._play();
-            else
-                this._setMuted(true);
+            this._setMuted(true);
         });
     }
 

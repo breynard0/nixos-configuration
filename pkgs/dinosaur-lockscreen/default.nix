@@ -2,7 +2,6 @@
   stdenvNoCC,
   fetchurl,
   ffmpeg,
-  pipewire,
 }:
 let
   uuid = "dinosaur-lockscreen@breynard";
@@ -32,12 +31,14 @@ stdenvNoCC.mkDerivation {
     dir=$out/share/gnome-shell/extensions/${uuid}
     mkdir -p $dir/assets
     cp ${./metadata.json} $dir/metadata.json
-    substitute ${./extension.js} $dir/extension.js \
-      --replace-fail @pwPlay@ ${pipewire}/bin/pw-play
 
     ffmpeg -v error -i ${dance} -vf scale=800:-1:flags=lanczos -start_number 0 $dir/assets/dance-%02d.png
     ffmpeg -v error -i ${static} -start_number 0 $dir/assets/static-%02d.png
     ffmpeg -v error -i ${music} -vn -c:a libvorbis -q:a 5 $dir/assets/music.ogg
+
+    substitute ${./extension.js} $dir/extension.js \
+      --replace-fail @ffmpeg@ ${ffmpeg}/bin/ffmpeg \
+      --replace-fail @musicSeconds@ "$(ffprobe -v error -show_entries format=duration -of csv=p=0 $dir/assets/music.ogg)"
 
     runHook postInstall
   '';
