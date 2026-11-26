@@ -120,6 +120,7 @@ in
     bottles
 
     android-tools
+    android-studio
 
     # TODO: Delete these three packages when they are no longer needed.
     gnumake
